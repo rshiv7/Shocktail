@@ -1,7 +1,11 @@
 #cock {
     position: absolute;
-    left: 50%;
-    top: 40%;
-    width: 1vw;
+    left: 47.5%;
+    top: 47.5%;
+    width: 0.5vw;
     height: 1vh;
+}
+
+#glassHeight {
+    height: 350px;
 }

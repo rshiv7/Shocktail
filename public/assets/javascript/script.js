@@ -115,3 +115,66 @@ function searchByIngredients(event) {
     }
   });
 }
+
+function showRandom() {
+  var queryURL = "https://www.thecocktaildb.com/api/json/v2/8673533/random.php";
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+    $(".coctailsList").empty();
+    var drink = response.drinks[0];
+    var drinkDiv = $("<div>").addClass("card");
+
+    var cardImgDiv = $("<div>").addClass(
+      "card-image waves-effect waves-block waves-light"
+    );
+    var drinkImg = $("<img>")
+      .attr("src", drink.strDrinkThumb)
+      .css("width", "50%");
+    $(cardImgDiv).append(drinkImg);
+
+    var cardContentDiv = $("<div>").addClass("card-content");
+    var icon = $("<i>")
+      .addClass("material-icons right")
+      .text("more_vert");
+
+    var cardContentSpan = $("<span>").addClass(
+      "card-title activator grey-text text-darken-4"
+    );
+    cardContentSpan.text(drink.strDrink).append(icon);
+    cardContentDiv.append(cardContentSpan);
+
+    var cardRevealDiv = $("<div>").addClass("card-reveal");
+    var iconClose = $("<i>")
+      .addClass("material-icons right")
+      .text("close");
+    var cardRevealSpan = $("<span>").addClass(
+      "card-title grey-text text-darken-4"
+    );
+    $(cardRevealSpan)
+      .text(drink.strDrink)
+      .append(iconClose);
+
+    var drinkRecipe = $("<p>").text(drink.strInstructions);
+    var drinkIngredients = $("<div>").html("<b> Ingregients </b>");
+    for (var j = 1; j < 15; j++) {
+      var ingredient = drink["strIngredient" + j];
+      var measure = drink["strMeasure" + j];
+      if (ingredient && ingredient.length > 0) {
+        if (measure.length > 0) {
+          drinkIngredients.append(
+            "<li>" + ingredient + ": " + measure + "</li> "
+          );
+        } else {
+          drinkIngredients.append("<li>" + ingredient + "</li> ");
+        }
+      }
+    }
+    $(cardRevealDiv).append(cardRevealSpan, drinkRecipe, drinkIngredients);
+    $(drinkDiv).append(cardImgDiv, cardContentDiv, cardRevealDiv);
+
+    $(".coctailsList").append(drinkDiv);
+  });
+}

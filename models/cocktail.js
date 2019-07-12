@@ -6,11 +6,6 @@ module.exports = function(sequelize, DataTypes) {
                 notNull: true
             }
         },
-        userId: {
-            type: DataTypes.INTEGER,
-            references: 'users',
-            referencesKey: "id"
-        },
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,

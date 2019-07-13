@@ -18,11 +18,17 @@ function searchByName(event) {
     console.log(response);
     var drinks = response.drinks;
     for (var i = 0; i < drinks.length; i++) {
-      var drinkDiv = $("<div>");
-      var drinkName = $("<h4>").text(drinks[i].strDrink);
-      var drinkImg = $("<img>")
-        .attr("src", drinks[i].strDrinkThumb)
-        .css("width", "60%");
+      var drinkDiv = $("<div>").addClass("card");
+
+      var cardImgDiv = $("<div>").addClass("card-image");
+      var drinkImg = $("<img>").attr("src", drinks[i].strDrinkThumb);
+      cardImgDiv.append(drinkImg);
+
+      var cardContentDiv = $("<div>").addClass("card-content");
+      var drinkName = $("<span>")
+        .addClass("card-title")
+        .text(drinks[i].strDrink);
+
       var drinkRecipe = $("<p>").text(drinks[i].strInstructions);
       var drinkIngredients = $("<div>").html("<b> Ingregients </b>");
       for (var j = 1; j < 15; j++) {
@@ -39,79 +45,10 @@ function searchByName(event) {
         }
       }
 
-      $(drinkDiv).append(drinkName, drinkImg, drinkRecipe, drinkIngredients);
+      cardContentDiv.append(drinkName, drinkRecipe, drinkIngredients);
+      $(drinkDiv).append(cardImgDiv, cardContentDiv);
 
       $(".coctailsList").append(drinkDiv);
-    }
-  });
-}
-
-function searchByIngredients(event) {
-  event.preventDefault();
-  debugger;
-  var basicURL =
-    "https://www.thecocktaildb.com/api/json/v2/8673533/filter.php?i=";
-
-  var ingredients = [];
-  $(".ing").each(function() {
-    if ($(this).prop("checked")) {
-      ingredients.push($(this).val());
-    }
-  });
-
-  var queryURL = basicURL + ingredients.join(",");
-  console.log(queryURL);
-
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-    console.log(response);
-    var drinks = response.drinks;
-    if (drinks == "None Found") {
-      $(".coctailsList")
-        .empty()
-        .text("None Found");
-    } else {
-      for (var i = 0; i < drinks.length; i++) {
-        var drinkDiv = $("<div>");
-        var drinkName = $("<h4>").text(drinks[i].strDrink);
-        var drinkImg = $("<img>")
-          .attr("src", drinks[i].strDrinkThumb)
-          .css("width", "60%");
-        var drinkInfo = $("<div>").css("display", "none");
-        var show = $("<button>")
-          .text("show more")
-          .css("width", "60%")
-          .on("click", function() {
-            if ($(drinkInfo).css("display") == "none") {
-              $(drinkInfo).show();
-              $(show).text("hide");
-            } else {
-              $(show).text("show");
-              $(drinkInfo).css("display", "none");
-            }
-          });
-
-        var drinkRecipe = $("<p>").text(drinks[i].strInstructions);
-        var drinkIngredients = $("<div>").html("<b> Ingregients </b>");
-        for (var j = 1; j < 15; j++) {
-          var ingredient = drinks[i]["strIngredient" + j];
-          var measure = drinks[i]["strMeasure" + j];
-          if (ingredient && ingredient.length > 0) {
-            if (measure.length > 0) {
-              drinkIngredients.append(
-                "<li>" + ingredient + ": " + measure + "</li> "
-              );
-            } else {
-              drinkIngredients.append("<li>" + ingredient + "</li> ");
-            }
-          }
-        }
-        $(drinkInfo).append(drinkRecipe, drinkIngredients);
-        drinkDiv.append(drinkName, drinkImg, drinkInfo, show);
-        $(".coctailsList").append(drinkDiv);
-      }
     }
   });
 }
@@ -130,9 +67,7 @@ function showRandom() {
     var cardImgDiv = $("<div>").addClass(
       "card-image waves-effect waves-block waves-light"
     );
-    var drinkImg = $("<img>")
-      .attr("src", drink.strDrinkThumb)
-      .css("width", "50%");
+    var drinkImg = $("<img>").attr("src", drink.strDrinkThumb);
     $(cardImgDiv).append(drinkImg);
 
     var cardContentDiv = $("<div>").addClass("card-content");
@@ -177,4 +112,102 @@ function showRandom() {
 
     $(".coctailsList").append(drinkDiv);
   });
+}
+
+function getInfo(id) {
+  var queryURL =
+    "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id;
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+    var drinks = response.drinks[0];
+    var drinkDiv = $("<div>").addClass("card");
+
+    var cardImgDiv = $("<div>").addClass(
+      "card-image waves-effect waves-block waves-light"
+    );
+    var drinkImg = $("<img>").attr("src", drinks.strDrinkThumb);
+    $(cardImgDiv).append(drinkImg);
+
+    var cardContentDiv = $("<div>").addClass("card-content");
+    var icon = $("<i>")
+      .addClass("material-icons right")
+      .text("more_vert");
+
+    var cardContentSpan = $("<span>").addClass(
+      "card-title activator grey-text text-darken-4"
+    );
+    cardContentSpan.text(drinks.strDrink).append(icon);
+    cardContentDiv.append(cardContentSpan);
+
+    var cardRevealDiv = $("<div>").addClass("card-reveal");
+    var iconClose = $("<i>")
+      .addClass("material-icons right")
+      .text("close");
+    var cardRevealSpan = $("<span>").addClass(
+      "card-title grey-text text-darken-4"
+    );
+    $(cardRevealSpan)
+      .text(drinks.strDrink)
+      .append(iconClose);
+
+    var drinkRecipe = $("<p>").text(drinks.strInstructions);
+    var drinkIngredients = $("<div>").html("<b> Ingregients </b>");
+    for (var j = 1; j < 15; j++) {
+      var ingredient = drinks["strIngredient" + j];
+      var measure = drinks["strMeasure" + j];
+      if (ingredient && ingredient.length > 0) {
+        if (measure.length > 0) {
+          drinkIngredients.append(
+            "<li>" + ingredient + ": " + measure + "</li> "
+          );
+        } else {
+          drinkIngredients.append("<li>" + ingredient + "</li> ");
+        }
+      }
+    }
+
+    $(cardRevealDiv).append(cardRevealSpan, drinkRecipe, drinkIngredients);
+    $(drinkDiv).append(cardImgDiv, cardContentDiv, cardRevealDiv);
+    $(".coctailsList").append(drinkDiv);
+  });
+}
+
+function searchByIngredients(event) {
+  event.preventDefault();
+  var basicURL =
+    "https://www.thecocktaildb.com/api/json/v2/8673533/filter.php?i=";
+
+  var ingredients = [];
+  $(".ing").each(function() {
+    if ($(this).prop("checked")) {
+      ingredients.push($(this).val());
+    }
+  });
+
+  var queryURL = basicURL + ingredients.join(",");
+  console.log(queryURL);
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(onSearchByIngredients);
+}
+
+function onSearchByIngredients(response) {
+  debugger;
+  var drinks = response.drinks;
+  if (drinks == "None Found") {
+    var img = $(".img").attr("src", "sad-cartoon-margarita.png");
+    $(".coctailsList")
+      .empty()
+      .html("<h4>None Found</h4>")
+      .append(img);
+  } else {
+    for (var i = 0; i < drinks.length; i++) {
+      var id = drinks[i].idDrink;
+      getInfo(id);
+    }
+  }
 }

@@ -197,3 +197,90 @@ function searchByIngredients(event) {
     }
   });
 }
+
+function getPref() {}
+
+function displayCarousel() {
+  debugger;
+  var prefs = getPref();
+  // var prefs = ["whiskey", "Triple sec", "campari"];
+
+  var allPromises = [];
+  for (var j = 0; j < prefs.length; j++) {
+    var queryURL =
+      "https://www.thecocktaildb.com/api/json/v2/8673533/filter.php?i=" +
+      prefs[j];
+
+    var filterPromise = $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+      console.log(response);
+      var drinks = response.drinks;
+      for (var i = 0; i < drinks.length; i++) {
+        var id = drinks[i].idDrink;
+
+        var queryURL =
+          "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id;
+        var lookupPromise = $.ajax({
+          url: queryURL,
+          method: "GET"
+        }).then(function(response) {
+          var drinks = response.drinks[0];
+          var carouselItem = $("<div>").addClass("carousel-item");
+          var drinkDiv = $("<div>").addClass("card");
+
+          var cardImgDiv = $("<div>").addClass(
+            "card-image waves-effect waves-block waves-light"
+          );
+          var drinkImg = $("<img>").attr("src", drinks.strDrinkThumb);
+          cardImgDiv.append(drinkImg);
+
+          var cardContentDiv = $("<div>").addClass("card-content");
+          var icon = $("<i>")
+            .addClass("material-icons right")
+            .text("more_vert");
+
+          var cardContentSpan = $("<span>")
+            .addClass("card-title activator grey-text text-darken-4")
+            .text(drinks.strDrink)
+            .append(icon);
+          cardContentDiv.append(cardContentSpan);
+
+          var cardRevealDiv = $("<div>").addClass("card-reveal");
+          var iconClose = $("<i>")
+            .addClass("material-icons right")
+            .text("close");
+          var cardRevealSpan = $("<span>")
+            .addClass("card-title grey-text text-darken-4")
+            .text(drinks.strDrink)
+            .append(iconClose);
+
+          var drinkRecipe = $("<p>").text(drinks.strInstructions);
+          var drinkIngredients = $("<div>").html("<b> Ingregients </b>");
+
+          getIngredients(drinks, drinkIngredients);
+
+          cardRevealDiv.append(cardRevealSpan, drinkRecipe, drinkIngredients);
+          drinkDiv.append(cardImgDiv, cardContentDiv, cardRevealDiv);
+          carouselItem.append(drinkDiv);
+          $(".carousel").append(carouselItem);
+          console.log("dne");
+        });
+        allPromises.push(lookupPromise);
+      }
+    });
+
+    allPromises.push(filterPromise);
+  }
+
+  Promise.all(allPromises).then(function() {
+    setTimeout(() => $(".carousel").carousel(), 500);
+  });
+}
+
+function onReady() {
+  displayCarousel();
+}
+
+$(onReady);

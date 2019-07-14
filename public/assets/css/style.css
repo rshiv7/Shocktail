@@ -1,4 +1,4 @@
-#cock {
+/* #cock {
     position: absolute;
     left: 47.5%;
     top: 47.5%;
@@ -9,4 +9,8 @@
 #glassHeight {
     height: 255px;
     width: 100px;
+} */
+
+.card-image{
+    height: 350px
 }

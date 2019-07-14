@@ -3,6 +3,7 @@ module.exports = function(sequelize, DataTypes) {
         review: {
             type: DataTypes.TEXT,
             validate: {
+                allowNull: false,
                 notNull: true,
                 notEmpty: true,
                 len: [1, 150]
@@ -18,11 +19,13 @@ module.exports = function(sequelize, DataTypes) {
     Review.associate = function(models) {
         Review.belongsTo(models.User, {
             foreignKey: {
+                allowNull: false,
                 notNull: true,
             }
         });
         Review.belongsTo(models.Cocktail, {
             foreignKey: {
+                allowNull: false,
                 notNull: true
             }
         });

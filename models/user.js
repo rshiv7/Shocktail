@@ -3,6 +3,7 @@ module.exports = function (sequelize, DataTypes) {
         username: {
             type: DataTypes.STRING,
             validate: {
+                allowNull: false,
                 notNull: true,
                 notEmpty: true,
                 len: [1, 16]
@@ -11,12 +12,14 @@ module.exports = function (sequelize, DataTypes) {
         password: {
             type: DataTypes.STRING,
             validate: {
+                allowNull: false,
                 notNull: true
             }
         },
         age: {
             type: DataTypes.INTEGER,
             validate: {
+                allowNull: false,
                 notNull: true,
                 notEmpty: true,
                 min: 21

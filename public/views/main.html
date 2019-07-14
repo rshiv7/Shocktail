@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,12 +29,107 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- materialize icon -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   
-    <link href = "../assets/css/style.css"></link>
+
+    <link href="../assets/css/style.css">
+    </link>
 </head>
+
 <body>
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <div id="slide-out" class="sidenav">
+                    <div class="col s4">
+                        <div class="coctailSearch">
+                            <form action="" method="post">
+
+                                <p><b>Ingredients</b></p>
+                                <!-- dropdown for alcoholic -->
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropAlco"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Alcoholic
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <form action="" method="post">
+                                            <label> <input type="checkbox" class='ing' value="vodka" />
+                                                <span>Vodka</span>
+                                            </label></br>
+                                            <label> <input type="checkbox" class='ing' value="gin" />
+                                                <span>Gin</span> </label>
+                                            <br>
+                                            <label> <input type="checkbox" class='ing' value="rum" />
+                                                <span>Rum</span>
+                                            </label><br>
+                                            <label> <input type="checkbox" class='ing' value="tequila" />
+                                                <span>Tequila</span>
+                                            </label><br>
+                                            <label> <input type="checkbox" class='ing' value="whiskey" />
+                                                <span>Whiskey</span>
+                                            </label><br>
+                                            <label> <input type="checkbox" class='ing' value="red_wine" />
+                                                <span>Red wine</span>
+                                            </label><br>
+                                            <label> <input type="checkbox" class='ing' value="triple_sec" />
+                                                <span>Triple
+                                                    sec</span>
+                                            </label><br>
+                                            <label> <input type="checkbox" class='ing' value="jagermeister" />
+                                                <span>Jagermeister</span> </label><br>
+                                            <label> <input type="checkbox" class='ing' value="kahlua" />
+                                                <span>Kahlua</span>
+                                            </label><br>
+
+                                            <label> <input type="checkbox" class='ing' value="cointreau" />
+                                                <span>Cointreau</span>
+                                            </label><br>
+                                            <label> <input type="checkbox" class='ing' value="campari" />
+                                                <span>Campari</span>
+                                            </label><br>
+                                            <label> <input type="checkbox" class='ing' value="champagne" />
+                                                <span>Champagne</span>
+                                            </label><br>
+
+                                            <label> <input type="checkbox" class='ing' value="vermouth" />
+                                                <span>Vermouth</span>
+                                            </label><br>
+                                            <label> <input type="checkbox" class='ing' value="brandy" />
+                                                <span>Brandy</span>
+                                            </label><br>
+                                            <label> <input type="checkbox" class='ing' value="amaretto" />
+                                                <span>Amaretto</span>
+                                            </label><br>
+                                            <label> <input type="checkbox" class='ing' value="ginger_ale" />
+                                                <span>Ginger
+                                                    Ale</span>
+                                            </label><br>
+                                        </form>
+                                    </div>
+                                </div>
+
+                               
+                                <button type="submit" class="btn btn-outline-dark" onclick="searchByIngredients(event)">
+                                    Show results
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <h1 class="display-4">Amazing App</h1>
+            </div>
+        </div>
+    </div>
 
 
-    <script src = "../assets/javascript/script.js"></script>
+    <script src="../assets/javascript/script.js"></script>
+   
+        <script>
+            $(document).ready(function () {
+                $('.sidenav').sidenav();
+            });
+        </script>
 </body>
+
 </html>

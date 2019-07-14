@@ -212,32 +212,38 @@
 
                 <!-- searchbar which cocktail do you want -->
                 <div class="row ">
-                        <form class="col s8">
-                            <div class="row">
-                                <div class="input-field col s4">
-                                    <input id="usersInputName" type="text">
-                                    <label for="usersInputName">what coctail do you want to make?</label>
-                                </div>
-                                <button class="btn btn-outline-dark mt-4 ml-5" onclick="searchByName(event)">
-                                    show
-                                </button>
+                    <form class="col s8">
+                        <div class="row">
+                            <div class="input-field col s4">
+                                <input id="usersInputName" type="text">
+                                <label for="usersInputName">what coctail do you want to make?</label>
                             </div>
-                        </form>
-                    </div>
+                            <button class="btn btn-outline-dark mt-4 ml-5" onclick="searchByName(event)">
+                                show
+                            </button>
+                        </div>
+                    </form>
+                </div>
 
-                    <!--  -->
+                <!--shocktail drink  -->
+                <div class="randomDrink">
+                    <button type="submit" class="btn btn-outline-dark" onclick="showRandom()">
+                        ShocktailMe
+                    </button>
+                </div>
+                
             </div>
         </div>
     </div>
 
 
     <script src="../assets/javascript/script.js"></script>
-   
-        <script>
-            $(document).ready(function () {
-                $('.sidenav').sidenav();
-            });
-        </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        });
+    </script>
 </body>
 
 </html>

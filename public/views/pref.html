@@ -6,17 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Project 2</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="../assets/javascript/beer.js"></script>
-    <script type="text/javascript" src="https://leaverou.github.io/prefixfree/prefixfree.min.js"></script>
+
     <link type="text/css" rel="stylesheet" href="../assets/css/materialize.css" media="screen,projection" />
     <link type="text/css" rel="stylesheet" href="../assets/css/materialize.min.css" media="screen,projection" />
     <link type="text/css" rel="stylesheet" href="../assets/css/glass.css" />
@@ -24,6 +16,23 @@
     <link type="text/css" rel="stylesheet" href="../assets/css/wine.css" />
     <link type="text/css" rel="stylesheet" href="../assets/css/tequila.css" />
     <link type="text/css" rel="stylesheet" href="../assets/css/beer.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.16.0/css/okta-sign-in.min.css"
+        type="text/css" rel="stylesheet" />
+    <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.16.0/css/okta-theme.css"
+        type="text/css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript" src="../assets/javascript/beer.js"></script>
+    <script src="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.16.0/js/okta-sign-in.min.js"
+        type="text/javascript"></script>
+
+    <script type="text/javascript" src="https://leaverou.github.io/prefixfree/prefixfree.min.js"></script>
 
 
 
@@ -32,14 +41,12 @@
 <body>
 
 
-    <!-- Modal Trigger -->
-    <button class="waves-effect waves-light btn modal-trigger" data-source="http://google.com"
-        href="#modal1">Modal</button>
-
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal">
+    <div id="modal1" class="modal modal-fixed-footer">
         <div class="modal-content">
-
+                <div id="okta-login-container"></div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
         </div>
     </div>
 
@@ -152,7 +159,7 @@
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator"
-                            src="https://www.piedfeed.com/wp-content/uploads/2018/03/alcohol-store-near-me-liquorstorenear-300x160.jpg">
+                            src="http://www.todayifoundout.com/wp-content/uploads/2017/05/alcohol.png">
                     </div>
                     <div class="card-content">
                         <span class="card-title activator grey-text text-darken-4">Card Title<i
@@ -162,81 +169,81 @@
                     <div class="card-reveal">
                         <span class="card-title grey-text text-darken-4">Card Title<i
                                 class="material-icons right">close</i></span>
-                               
-                                <div class = "container" id = "prefb">
 
-                                <a class="waves-effect waves-light btn-small">Button</a>
-                                <a class="waves-effect waves-light btn-small">Button</a>
-                                <a class="waves-effect waves-light btn-small">Button</a>
-                                <br><br>
-                                <a class="waves-effect waves-light btn-small">Button</a>
-                                <a class="waves-effect waves-light btn-small">Button</a>
-                                <a class="waves-effect waves-light btn-small">Button</a>
-                                <br><br>
-                                <a class="waves-effect waves-light btn-small">Button</a>
-                                <a class="waves-effect waves-light btn-small">Button</a>
-                                <a class="waves-effect waves-light btn-small">Button</a>
-                    </div>
+                        <div class="container" id="prefb">
+
+                            <a class="waves-effect waves-light btn-small">Button</a>
+                            <a class="waves-effect waves-light btn-small">Button</a>
+                            <a class="waves-effect waves-light btn-small">Button</a>
+                            <br><br>
+                            <a class="waves-effect waves-light btn-small">Button</a>
+                            <a class="waves-effect waves-light btn-small">Button</a>
+                            <a class="waves-effect waves-light btn-small">Button</a>
+                            <br><br>
+                            <a class="waves-effect waves-light btn-small">Button</a>
+                            <a class="waves-effect waves-light btn-small">Button</a>
+                            <a class="waves-effect waves-light btn-small">Button</a>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col s12 m4">
-                    <div class="card">
-                            <div class="card-image waves-effect waves-block waves-light">
-                                <img class="activator"
-                                    src="https://www.piedfeed.com/wp-content/uploads/2018/03/alcohol-store-near-me-liquorstorenear-300x160.jpg">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4">Card Title<i
-                                        class="material-icons right">more_vert</i></span>
-                                <p><a href="#">This is a link</a></p>
-                            </div>
-                            <div class="card-reveal">
-                                <span class="card-title grey-text text-darken-4">Card Title<i
-                                        class="material-icons right">close</i></span>
-                                        <a class="waves-effect waves-light btn-small">Button</a>
-                                        <a class="waves-effect waves-light btn-small">Button</a>
-                                        <a class="waves-effect waves-light btn-small">Button</a>
-                                        <br><br>
-                                        <a class="waves-effect waves-light btn-small">Button</a>
-                                        <a class="waves-effect waves-light btn-small">Button</a>
-                                        <a class="waves-effect waves-light btn-small">Button</a>
-                                        <br><br>
-                                        <a class="waves-effect waves-light btn-small">Button</a>
-                                        <a class="waves-effect waves-light btn-small">Button</a>
-                                        <a class="waves-effect waves-light btn-small">Button</a>
-                            </div>
-                        </div>
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator"
+                            src="https://southboundvapes.com/wp-content/uploads/2016/06/LEMONLIME-600x600.jpg">
                     </div>
-                <div class="col s12 m4">
-                        <div class="card">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator"
-                                        src="https://www.piedfeed.com/wp-content/uploads/2018/03/alcohol-store-near-me-liquorstorenear-300x160.jpg">
-                                </div>
-                                <div class="card-content">
-                                    <span class="card-title activator grey-text text-darken-4">Card Title<i
-                                            class="material-icons right">more_vert</i></span>
-                                    <p><a href="#">This is a link</a></p>
-                                </div>
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-darken-4">Card Title<i
-                                            class="material-icons right">close</i></span>
-                                            <a class="waves-effect waves-light btn-small">Button</a>
-                                            <a class="waves-effect waves-light btn-small">Button</a>
-                                            <a class="waves-effect waves-light btn-small">Button</a>
-                                            <br><br>
-                                            <a class="waves-effect waves-light btn-small">Button</a>
-                                            <a class="waves-effect waves-light btn-small">Button</a>
-                                            <a class="waves-effect waves-light btn-small">Button</a>
-                                            <br><br>
-                                            <a class="waves-effect waves-light btn-small">Button</a>
-                                            <a class="waves-effect waves-light btn-small">Button</a>
-                                            <a class="waves-effect waves-light btn-small">Button</a>
-                                </div>
-                            </div>
-                        </div>
-                <!-- <div class="col s12 m3">
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Card Title<i
+                                class="material-icons right">more_vert</i></span>
+                        <p><a href="#">This is a link</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Card Title<i
+                                class="material-icons right">close</i></span>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <br><br>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <br><br>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator"
+                            src="https://gd.image-gmkt.com/MONIN-SYRUP-700ML-1000ML/li/946/601/804601946.g_400-w_g.jpg">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">Card Title<i
+                                class="material-icons right">more_vert</i></span>
+                        <p><a href="#">This is a link</a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Card Title<i
+                                class="material-icons right">close</i></span>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <br><br>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <br><br>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <a class="waves-effect waves-light btn-small">Button</a>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col s12 m3">
             <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
                     <span class="card-title">Card Title</span>
@@ -249,17 +256,93 @@
                 </div>
             </div>
         </div> -->
-            </div>
+        </div>
 
-            
+
 </body>
 
 <script>
-        $(document).ready(function(){
-            $('#modal1').modal();
-          $('#modal1').modal("open");
-        });
-      </script>
+    $(document).ready(function () {
+        $('.modal').modal();
+        $('.modal').modal('open');
+    });
+    
+  var oktaSignIn = new OktaSignIn({
+    baseUrl: "https://dev-575812.okta.com",
+    clientId: "0oavk9afauDHernym356",
+    authParams: {
+      issuer: "https://dev-575812.okta.com/oauth2/default",
+      responseType: ['token', 'id_token'],
+      display: 'page'
+    }
+  });
+  if (oktaSignIn.token.hasTokensInUrl()) {
+    oktaSignIn.token.parseTokensFromUrl(
+      function success(res) {
+        // The tokens are returned in the order requested by `responseType` above
+        var accessToken = res[0];
+        var idToken = res[1]
+
+        // Say hello to the person who just signed in:
+        console.log('Hello, ' + idToken.claims.email);
+
+        // Save the tokens for later use, e.g. if the page gets refreshed:
+        oktaSignIn.tokenManager.add('accessToken', accessToken);
+        oktaSignIn.tokenManager.add('idToken', idToken);
+
+        // Remove the tokens from the window location hash
+        window.location.hash='';
+      },
+      function error(err) {
+        // handle errors as needed
+        console.error(err);
+      }
+    );
+  } else {
+    oktaSignIn.session.get(function (res) {
+      // Session exists, show logged in state.
+      if (res.status === 'ACTIVE') {
+        console.log('Welcome back, ' + res.login);
+        return;
+      }
+      // No session, show the login form
+      oktaSignIn.renderEl(
+        { el: '#okta-login-container' },
+        function success(res) {
+          // Nothing to do in this case, the widget will automatically redirect
+          // the user to Okta for authentication, then back to this page if successful
+        },
+        function error(err) {
+          // handle errors as needed
+          console.error(err);
+        }
+      );
+    });
+  }
+  function callMessagesApi() {
+  var accessToken = oktaSignIn.tokenManager.get("accessToken");
+
+  if (!accessToken) {
+    return;
+  }
+
+  // Make the request using jQuery
+  $.ajax({
+    url: 'http://localhost:8080/api/messages',
+    headers: {
+      Authorization : 'Bearer ' + accessToken.accessToken
+    },
+    success: function(response) {
+      // Received messages!
+      console.log('Messages', response);
+    },
+    error: function(response) {
+      console.error(response);
+    }
+  });
+}
+</script>
+
 
 
 

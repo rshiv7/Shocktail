@@ -14,3 +14,15 @@
 .card-image{
     height: 350px
 }
+
+.appName {
+    display: flex;
+    justify-content: center;
+  }
+  #jumbo{
+    background: url(../images/bg10.jpg) no-repeat center;
+  }
+
+  #prefb{
+      margin 
+  }

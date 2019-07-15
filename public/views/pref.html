@@ -20,17 +20,9 @@
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.16.0/css/okta-sign-in.min.css"
-        type="text/css" rel="stylesheet" />
-    <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.16.0/css/okta-theme.css"
-        type="text/css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-    <script src="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.16.0/js/okta-sign-in.min.js"
-        type="text/javascript"></script>
 
     <script type="text/javascript" src="https://leaverou.github.io/prefixfree/prefixfree.min.js"></script>
 
@@ -42,12 +34,9 @@
 
 
     <div id="modal1" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <div id="widget-container"></div>
-        </div>
-        <!-- <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div> -->
+        <div class="modal-content"></div>
+        <
+        
     </div>
 
     <div class="row">
@@ -171,14 +160,15 @@
                                 class="material-icons right">close</i></span>
 
                         <div class="container" id="prefb">
-                                <div class="row"></div>
+                            <div class="row"></div>
                             <a class="waves-effect waves-light btn-small" data-bool="0" data-id="vodka">Vodka</a>
                             <a class="waves-effect waves-light btn-small" data-bool="0" data-id="gin">Gin</a>
                             <a class="waves-effect waves-light btn-small" data-bool="0" data-id="rum">Rum</a>
                             <br><br>
                             <a class="waves-effect waves-light btn-small" data-bool="0" data-id="tequila">Tequila</a>
                             <a class="waves-effect waves-light btn-small" data-bool="0" data-id="whiskey">Whiskey</a>
-                            <a class="waves-effect waves-light btn-small" data-bool="0" data-id="triple_sec">Triple Sec</a>
+                            <a class="waves-effect waves-light btn-small" data-bool="0" data-id="triple_sec">Triple
+                                Sec</a>
                             <br><br>
                             <a class="waves-effect waves-light btn-small" data-bool="0"
                                 data-id="jagermeister">Jagermeister</a>
@@ -302,210 +292,57 @@
 
     })
 
-    var config = {
-
-        logo: '/path/to/logo.png',
-
-        customButtons: [
-            {
-                title: 'Sign Up',
-                className: 'btn-customAuth',
-                click: function () {
-                    // clicking on the button navigates to another page
-                    window.location.href = 'http://www.example1.com';
-                }
-                // },
-                // {
-                //   title: 'Click Me 2',
-                //   className: 'btn-customAuth',
-                //   click: function() {
-                //       // clicking on the button navigates to another page
-                //       window.location.href = 'http://www.example2.com';
-                //   }
-            }
-        ]
-
-
-    };
-
-
-    var signIn = new OktaSignIn({
-        baseUrl: 'https://dev-575812.okta.com}',
-        clientId: '${0oavk9afauDHernym356}',
-        redirectUri: '${http://localhost:8080/authorization-code/callback}',
-        authParams: {
-            issuer: 'default',
-            responseType: ['id_token', 'token'],
-            display: 'page'
-        }
+    //firebase
+var config = {
+  apiKey: "AIzaSyC4Oa03PsGzQVoElWaQhppeLBDxINlYfYk",
+  authDomain: "pinme-270ea.firebaseapp.com",
+  databaseURL: "https://pinme-270ea.firebaseio.com",
+  projectId: "pinme-270ea",
+  storageBucket: "pinme-270ea.appspot.com",
+  messagingSenderId: "806008211699",
+  appId: "1:806008211699:web:f94ec750052f45f3"
+};
+// Initialize Firebase
+firebase.initializeApp(config);
+var database = firebase.database();
+googleSignIn = () => {
+  var provider = new firebase.auth.GoogleAuthProvider();
+  firebase
+    .auth()
+    .signInWithPopup(provider)
+    .then(function(result) {
+      console.log(result);
+    })
+    .catch(function(err) {
+      console.log(err);
     });
-    // var config = {
-
-    //     customButtons: [
-    //         {
-    //             title: 'Sign Up',
-    //             className: 'btn-customAuth',
-    //             click: function () {
-    //                 // clicking on the button navigates to another page
-    //                 window.location.href = 'http://www.example1.com';
-    //             }
-    //             // },
-    //             // {
-    //             //   title: 'Click Me 2',
-    //             //   className: 'btn-customAuth',
-    //             //   click: function() {
-    //             //       // clicking on the button navigates to another page
-    //             //       window.location.href = 'http://www.example2.com';
-    //             //   }
-    //         }
-    //     ]
-
-    // };
-
-    if (!signIn.token.hasTokensInUrl()) {
-        signIn.renderEl({ el: '#widget-container' },
-            function () { },
-            function (err) { console.err(err) });
-    }
-
-    else {
-        signIn.token.parseTokensFromUrl(
-            function success(res) {
-                // Add the token to tokenManager to automatically renew the token when needed
-                signIn.tokenManager.add('id_token', res[0]);
-                signIn.tokenManager.add('access_token', res[1]);
-            },
-            function error(err) {
-                console.log('handle error', err);
-            }
-        );
-    }
-
-    function accessOkta() {
-        var accessToken = signIn.tokenManager.get('access_token');
-
-        if (!accessToken) {
-            // This means that the user is not logged in
-            return;
-        }
-
-        // Make a request using jQuery
-        $.ajax({
-            // Your API or resource server:
-            url: 'http://localhost:8080/authorization-code/callback',
-            headers: {
-                Authorization: 'Bearer ' + accessToken.accessToken
-            },
-            success: function (response) {
-                // Received access!
-                console.log('Access', response);
-            },
-            error: function (response) {
-                console.error(response);
-            }
-        });
-    }
-
-    function error(err) {
-        var errorEl = document.createElement('div');
-        errorEl.textContent = 'Error! ' + err.message;
-        document.body.insertBefore(
-            errorEl,
-            document.body.firstChild
-        );
-    }
-
-//     var signIn = new OktaSignIn({baseUrl: 'https://{yourOktaDomain}'});
-//   signIn.renderEl({
-//     el: '#widget-container'
-//   }, function success(res) {
-//     if (res.status === 'SUCCESS') {
-//       console.log('Do something with this sessionToken', res.session.token);
-//     } else {
-//     // The user can be in another authentication state that requires further action.
-//     // For more information about these states, see:
-//     //   https://github.com/okta/okta-signin-widget#rendereloptions-success-error
-//     }
-//   });
+};
+var signedInUser;
+function authStateObserver(user) {
+  signedInUser = user;
+  if (user) {
+    $("#signIn").css("display", "none");
+    $("#favorites").css("display", "block");
+    $("#out").css("display", "block");
+    $(".greet").css("display", "block");
+    $(".greet").text("Hi, " + user.displayName + "!"); //firebase api
+    console.log(user.displayName);
+    console.log("got user");
+    console.log(user);
+    listenToDb();
+  } else {
+    $("#signIn").css("display", "block");
+    $("#out").css("display", "none");
+    $(".greet").css("display", "none");
+    $("#favorites").css("display", "none");
+  }
+}
+firebase.auth().onAuthStateChanged(authStateObserver);
+function logOut() {
+  firebase.auth().signOut();
+}
 
 
-
-
-
-//   var oktaSignIn = new OktaSignIn({
-//     baseUrl: "https://dev-575812.okta.com",
-//     clientId: "0oavk9afauDHernym356",
-//     authParams: {
-//       issuer: "https://dev-575812.okta.com/oauth2/default",
-//       responseType: ['token', 'id_token'],
-//       display: 'page'
-//     }
-//   });
-//   if (oktaSignIn.token.hasTokensInUrl()) {
-//     oktaSignIn.token.parseTokensFromUrl(
-//       function success(res) {
-//         // The tokens are returned in the order requested by `responseType` above
-//         var accessToken = res[0];
-//         var idToken = res[1]
-
-//         // Say hello to the person who just signed in:
-//         console.log('Hello, ' + idToken.claims.email);
-
-//         // Save the tokens for later use, e.g. if the page gets refreshed:
-//         oktaSignIn.tokenManager.add('accessToken', accessToken);
-//         oktaSignIn.tokenManager.add('idToken', idToken);
-
-//         // Remove the tokens from the window location hash
-//         window.location.hash='';
-//       },
-//       function error(err) {
-//         // handle errors as needed
-//         console.error(err);
-//       }
-//     );
-//   } else {
-//     oktaSignIn.session.get(function (res) {
-//       // Session exists, show logged in state.
-//       if (res.status === 'ACTIVE') {
-//         console.log('Welcome back, ' + res.login);
-//         return;
-//       }
-//       // No session, show the login form
-//       oktaSignIn.renderEl(
-//         { el: '#okta-login-container' },
-//         function success(res) {
-//           // Nothing to do in this case, the widget will automatically redirect
-//           // the user to Okta for authentication, then back to this page if successful
-//         },
-//         function error(err) {
-//           // handle errors as needed
-//           console.error(err);
-//         }
-//       );
-//     });
-//   }
-//   function callMessagesApi() {
-//   var accessToken = oktaSignIn.tokenManager.get("accessToken");
-
-//   if (!accessToken) {
-//     return;
-//   }
-
-//   // Make the request using jQuery
-//   $.ajax({
-//     url: 'http://localhost:8080/api/messages',
-//     headers: {
-//       Authorization : 'Bearer ' + accessToken.accessToken
-//     },
-//     success: function(response) {
-//       // Received messages!
-//       console.log('Messages', response);
-//     },
-//     error: function(response) {
-//       console.error(response);
-//     }
-//   });
-// }
 
 
 </script>

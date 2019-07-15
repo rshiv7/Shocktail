@@ -22,7 +22,7 @@ function searchByName(event) {
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).then(function(response) {
+  }).then(function(response, index) {
     $(".coctailsList").empty();
     console.log(response);
     var drinks = response.drinks;
@@ -53,7 +53,7 @@ function searchByName(event) {
 
       cardContentDiv.append(drinkName, drinkRecipe, drinkIngredients);
       drinkDiv.append(cardImgDiv, cardContentDiv);
-
+      //  $($(".column")[index % 2]).append(div);
       $(".coctailsList").append(drinkDiv);
     }
   });
@@ -122,13 +122,30 @@ function showRandom() {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
+    $(".searchBar").hide();
+    $(".carousel").hide();
+
     $(".coctailsList").empty();
+    $(".popUp")
+      .empty()
+      .show()
+      .css("zIndex", 11);
     var div = createCard(response);
-    $(".coctailsList").append(div);
+    var iconClosePop = $("<i>")
+      .addClass("material-icons right ")
+      .attr("id", "iconClosePop")
+      .text("close")
+      .on("click", function() {
+        $(".searchBar").show();
+        $(".carousel").show();
+        $(".popUp").hide();
+      });
+
+    $(".popUp").append(div, iconClosePop);
   });
 }
 
-function getInfo(id) {
+function getInfo(id, index) {
   var queryURL =
     "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id;
   $.ajax({
@@ -136,7 +153,8 @@ function getInfo(id) {
     method: "GET"
   }).then(function(response) {
     var div = createCard(response);
-    $(".coctailsList").append(div);
+    // $(".coctailsList").append(div);
+    $($(".column")[index % 2]).append(div);
   });
 }
 
@@ -170,7 +188,7 @@ function searchByIngredients(event) {
     } else {
       for (var i = 0; i < drinks.length; i++) {
         var id = drinks[i].idDrink;
-        getInfo(id);
+        getInfo(id, index);
       }
     }
   });
@@ -226,5 +244,9 @@ function onReady() {
   $("#dropNonAlco").on("click", dropDown);
   $("#dropFruits").on("click", dropDown);
 }
+
+// $(document).ready(function() {
+//   $(".tap-target").tapTarget("open");
+// });
 
 $(onReady);

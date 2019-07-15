@@ -11,8 +11,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Bootstrap -->
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" /> -->
-<!-- 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
@@ -32,219 +32,228 @@
 
     <link rel="stylesheet" href="../assets/css/styleMain.css">
     </link>
-    <link href="https://fonts.googleapis.com/css?family=Advent+Pro|Bubbler+One|Gruppo|Inknut+Antiqua|Marcellus|Thasadith&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Advent+Pro|Bubbler+One|Gruppo|Inknut+Antiqua|Marcellus|Thasadith&display=swap"
+        rel="stylesheet">
 
 </head>
 
 <body>
-  
-        <div class="jumbotron">
-            <div class="container">
-                <div id="slide-out" class="sidenav">
-                    <div class="col s4">
-                        <div class="coctailSearch">
-                            <form action="" method="post">
 
-                                <h4>Ingredients</h4>
-                                <!-- dropdown for alcoholic -->
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropAlco"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Alcoholic
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2" id="dropAlcoDiv">
-                                        <form action="" method="post">
-                                            <label> <input type="checkbox" class='ing' value="vodka" />
-                                                <span>Vodka</span>
-                                            </label></br>
-                                            <label> <input type="checkbox" class='ing' value="gin" />
-                                                <span>Gin</span> </label>
-                                            <br>
-                                            <label> <input type="checkbox" class='ing' value="rum" />
-                                                <span>Rum</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="tequila" />
-                                                <span>Tequila</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="whiskey" />
-                                                <span>Whiskey</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="red_wine" />
-                                                <span>Red wine</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="triple_sec" />
-                                                <span>Triple
-                                                    sec</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="jagermeister" />
-                                                <span>Jagermeister</span> </label><br>
-                                            <label> <input type="checkbox" class='ing' value="kahlua" />
-                                                <span>Kahlua</span>
-                                            </label><br>
+    <div class="jumbotron" id="jumbo">
+        <div class="container">
+            <div id="slide-out" class="sidenav">
+                <div class="col s4">
+                    <div class="coctailSearch">
+                        <form action="" method="post">
 
-                                            <label> <input type="checkbox" class='ing' value="cointreau" />
-                                                <span>Cointreau</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="campari" />
-                                                <span>Campari</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="champagne" />
-                                                <span>Champagne</span>
-                                            </label><br>
-
-                                            <label> <input type="checkbox" class='ing' value="vermouth" />
-                                                <span>Vermouth</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="brandy" />
-                                                <span>Brandy</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="amaretto" />
-                                                <span>Amaretto</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="ginger_ale" />
-                                                <span>Ginger
-                                                    Ale</span>
-                                            </label><br>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <!-- dropdown for non-alcoholic -->
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropNonAlco"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Non alcoholic
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropNonAlco" id="dropNonAlcoDiv">
-                                        <form action="" method="post">
-                                            <label> <input type="checkbox" class='ing' value="soda_water" />
-                                                <span>Soda
-                                                    Water</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="coffee" />
-                                                <span>Coffee</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="coca_cola" />
-                                                <span>Coca-Cola</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="sweet_and_sour" />
-                                                <span>Sweet
-                                                    and
-                                                    Sour</span> </label><br>
-
-                                            <label> <input type="checkbox" class='ing' value="cream" />
-                                                <span>Cream</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="milk" />
-                                                <span>Milk</span>
-                                            </label><br>
-
-                                            <label> <input type="checkbox" class='ing' value="grenadine" />
-                                                <span>Grenadine</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="red_wine" />
-                                                <span>Red
-                                                    wine</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="grapefruit_juice" />
-                                                <span>Grapefruit
-                                                    Juice</span> </label><br>
-                                            <label> <input type="checkbox" class='ing' value="apple_juice" />
-                                                <span>Apple
-                                                    Juice</span> </label><br>
-                                            <label> <input type="checkbox" class='ing' value="orange_juice" />
-                                                <span>Orange
-                                                    Juice</span> </label><br>
-                                            <label> <input type="checkbox" class='ing' value="pineapple_juice" />
-                                                <span>Pineapple
-                                                    Juice</span> </label><br>
-                                            <label> <input type="checkbox" class='ing' value="cranberry_juice" />
-                                                <span>Cranberry
-                                                    Juice</span> </label><br>
-                                            <label> <input type="checkbox" class='ing' value="sugar_syrup" />
-                                                <span>Sugar
-                                                    Syrup</span> </label><br>
-
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <!-- dropdown for fruits -->
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropFruits"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Fruits
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropFruits" id="dropFruitsDiv">
-                                        <form action="" method="post">
-                                            <label> <input type="checkbox" class='ing' value="orange" />
-                                                <span>Orange</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="banana" />
-                                                <span>Banana</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="lemon" />
-                                                <span>Lemon</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="lime" />
-                                                <span>Lime</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="pineapple" />
-                                                <span>Pineapple</span>
-                                            </label><br>
-                                            <label> <input type="checkbox" class='ing' value="strawberries" />
-                                                <span>Strawberries</span> </label><br>
-                                            <label> <input type="checkbox" class='ing' value="brandy" />
-                                                <span>Cranberry
-                                                    Juice</span> </label><br>
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <button type="submit" class="btn btn-outline-dark" onclick="searchByIngredients(event)">
-                                    Show results
+                            <h4>Ingredients</h4>
+                            <!-- dropdown for alcoholic -->
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropAlco"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Alcoholic
                                 </button>
-                            </form>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2" id="dropAlcoDiv">
+                                    <form action="" method="post">
+                                        <label> <input type="checkbox" class='ing' value="vodka" />
+                                            <span>Vodka</span>
+                                        </label></br>
+                                        <label> <input type="checkbox" class='ing' value="gin" />
+                                            <span>Gin</span> </label>
+                                        <br>
+                                        <label> <input type="checkbox" class='ing' value="rum" />
+                                            <span>Rum</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="tequila" />
+                                            <span>Tequila</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="whiskey" />
+                                            <span>Whiskey</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="red_wine" />
+                                            <span>Red wine</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="triple_sec" />
+                                            <span>Triple
+                                                sec</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="jagermeister" />
+                                            <span>Jagermeister</span> </label><br>
+                                        <label> <input type="checkbox" class='ing' value="kahlua" />
+                                            <span>Kahlua</span>
+                                        </label><br>
 
-                        </div>
+                                        <label> <input type="checkbox" class='ing' value="cointreau" />
+                                            <span>Cointreau</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="campari" />
+                                            <span>Campari</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="champagne" />
+                                            <span>Champagne</span>
+                                        </label><br>
+
+                                        <label> <input type="checkbox" class='ing' value="vermouth" />
+                                            <span>Vermouth</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="brandy" />
+                                            <span>Brandy</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="amaretto" />
+                                            <span>Amaretto</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="ginger_ale" />
+                                            <span>Ginger
+                                                Ale</span>
+                                        </label><br>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- dropdown for non-alcoholic -->
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropNonAlco"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Non alcoholic
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropNonAlco" id="dropNonAlcoDiv">
+                                    <form action="" method="post">
+                                        <label> <input type="checkbox" class='ing' value="soda_water" />
+                                            <span>Soda
+                                                Water</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="coffee" />
+                                            <span>Coffee</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="coca_cola" />
+                                            <span>Coca-Cola</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="sweet_and_sour" />
+                                            <span>Sweet
+                                                and
+                                                Sour</span> </label><br>
+
+                                        <label> <input type="checkbox" class='ing' value="cream" />
+                                            <span>Cream</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="milk" />
+                                            <span>Milk</span>
+                                        </label><br>
+
+                                        <label> <input type="checkbox" class='ing' value="grenadine" />
+                                            <span>Grenadine</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="red_wine" />
+                                            <span>Red
+                                                wine</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="grapefruit_juice" />
+                                            <span>Grapefruit
+                                                Juice</span> </label><br>
+                                        <label> <input type="checkbox" class='ing' value="apple_juice" />
+                                            <span>Apple
+                                                Juice</span> </label><br>
+                                        <label> <input type="checkbox" class='ing' value="orange_juice" />
+                                            <span>Orange
+                                                Juice</span> </label><br>
+                                        <label> <input type="checkbox" class='ing' value="pineapple_juice" />
+                                            <span>Pineapple
+                                                Juice</span> </label><br>
+                                        <label> <input type="checkbox" class='ing' value="cranberry_juice" />
+                                            <span>Cranberry
+                                                Juice</span> </label><br>
+                                        <label> <input type="checkbox" class='ing' value="sugar_syrup" />
+                                            <span>Sugar
+                                                Syrup</span> </label><br>
+
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- dropdown for fruits -->
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropFruits"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Fruits
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropFruits" id="dropFruitsDiv">
+                                    <form action="" method="post">
+                                        <label> <input type="checkbox" class='ing' value="orange" />
+                                            <span>Orange</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="banana" />
+                                            <span>Banana</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="lemon" />
+                                            <span>Lemon</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="lime" />
+                                            <span>Lime</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="pineapple" />
+                                            <span>Pineapple</span>
+                                        </label><br>
+                                        <label> <input type="checkbox" class='ing' value="strawberries" />
+                                            <span>Strawberries</span> </label><br>
+                                        <label> <input type="checkbox" class='ing' value="brandy" />
+                                            <span>Cranberry
+                                                Juice</span> </label><br>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-outline-dark" onclick="searchByIngredients(event)">
+                                Show results
+                            </button>
+                        </form>
+
                     </div>
                 </div>
-                <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            </div>
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
-                <div class="appName">
+            <div class="appName">
                 <img src="../assets/images/icon1.png" alt="">
                 <h1 class="display-4">SHOCKTAIL</h1>
             </div>
-                <!-- searchbar which cocktail do you want -->
-                <div class="row ">
-                    <form class="col s8">
-                        <div class="row">
-                            <div class="input-field col s4">
-                                <input id="usersInputName" type="text">
-                                <label for="usersInputName">what coctail do you want to make?</label>
-                            </div>
-                            <button class="btn btn-outline-dark mt-4 ml-5" onclick="searchByName(event)">
-                                show
-                            </button>
+            <!-- searchbar which cocktail do you want -->
+            <div class="row ">
+                <div class="col s4"></div>
+                <form class="col s6">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="usersInputName" type="text">
+                            <label for="usersInputName">what coctail do you want to make?</label>
                         </div>
-                    </form>
-                </div>
+                        <button id="showCocktail" class="col s2 btn btn-outline-dark ml-5"
+                            onclick="searchByName(event)">
+                            show
+                        </button>
+                    </div>
+                </form>
+                <div class="col s2"></div>
+            </div>
 
+            <div class="row">
+                <div class="col s5"></div>
                 <!--shocktail drink  -->
-                <div class="randomDrink">
+                <div class="randomDrink col s7">
                     <button type="submit" class="btn btn-outline-dark" onclick="showRandom()">
                         ShocktailMe
                     </button>
                 </div>
-
             </div>
         </div>
-        <div class="container">
+
+    </div>
+    </div>
+    <div class="container">
         <!-- display result -->
         <div class="carousel"></div>
-        
+
         <div class="coctailsList"></div>
-        
+
     </div>
 
 

@@ -212,38 +212,48 @@
                 <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
                 <div class="appName">
-                <img src="../assets/images/icon1.png" alt="">
+                <img class='logo' src="../assets/images/icon1.png" alt="">
                 <h1 class="display-4">SHOCKTAIL</h1>
             </div>
-                <!-- searchbar which cocktail do you want -->
-                <div class="row ">
-                    <form class="col s8">
-                        <div class="row">
-                            <div class="input-field col s4">
-                                <input id="usersInputName" type="text">
-                                <label for="usersInputName">what coctail do you want to make?</label>
-                            </div>
-                            <button class="btn btn-outline-dark mt-4 ml-5" onclick="searchByName(event)">
-                                show
-                            </button>
-                        </div>
-                    </form>
-                </div>
+           
 
-                <!--shocktail drink  -->
-                <div class="randomDrink">
-                    <button type="submit" class="btn btn-outline-dark" onclick="showRandom()">
-                        ShocktailMe
-                    </button>
-                </div>
 
             </div>
         </div>
         <div class="container">
+
+              
         <!-- display result -->
         <div class="carousel"></div>
+
+           <!-- searchbar which cocktail do you want -->
+           <div class="searchBar">
+                <form class="col ">
+                    <div class="row ">
+                        <div class="input-field col">
+                            <input id="usersInputName" type="text">
+                            <label for="usersInputName">what coctail do you want to make?</label>
+                        </div>
+                        <button class="btn btn-outline-dark mt-4 ml-5" onclick="searchByName(event)">
+                            show
+                        </button>
+                    </div>
+                </form>
+
+
+                <!--shocktail drink  -->
+                <div class="row randomDrink">
+                        <button type="submit" class="btn btn-outline-dark" onclick="showRandom()">
+                            ShocktailMe
+                        </button>
+                    </div>
+            </div>
         
-        <div class="coctailsList"></div>
+        <div class="coctailsList">
+            <div class="column"></div>
+            <div class="column"></div>
+
+        </div>
         
     </div>
 

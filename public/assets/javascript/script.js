@@ -217,7 +217,7 @@ function displayCarousel() {
     });
   }
 
-  setTimeout(() => $(".carousel").carousel(), 500);
+  setTimeout(() => $(".carousel").carousel(), 1500);
 }
 
 function onReady() {

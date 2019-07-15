@@ -50,53 +50,43 @@ function searchByName(event) {
   });
 }
 
-function showRandom() {
-  var queryURL = "https://www.thecocktaildb.com/api/json/v2/8673533/random.php";
+function createCard(response) {
+  var drink = response.drinks[0];
+  var drinkDiv = $("<div>").addClass("card");
 
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function(response) {
-    $(".coctailsList").empty();
-    var drink = response.drinks[0];
+  var cardImgDiv = $("<div>").addClass(
+    "card-image waves-effect waves-block waves-light"
+  );
+  var drinkImg = $("<img>").attr("src", drink.strDrinkThumb);
+  cardImgDiv.append(drinkImg);
 
-    var drinkDiv = $("<div>").addClass("card");
+  var cardContentDiv = $("<div>").addClass("card-content");
+  var icon = $("<i>")
+    .addClass("material-icons right")
+    .text("more_vert");
 
-    var cardImgDiv = $("<div>").addClass(
-      "card-image waves-effect waves-block waves-light"
-    );
-    var drinkImg = $("<img>").attr("src", drink.strDrinkThumb);
-    cardImgDiv.append(drinkImg);
+  var cardContentSpan = $("<span>")
+    .addClass("card-title activator grey-text text-darken-4")
+    .text(drink.strDrink)
+    .append(icon);
+  cardContentDiv.append(cardContentSpan);
 
-    var cardContentDiv = $("<div>").addClass("card-content");
-    var icon = $("<i>")
-      .addClass("material-icons right")
-      .text("more_vert");
+  var cardRevealDiv = $("<div>").addClass("card-reveal");
+  var iconClose = $("<i>")
+    .addClass("material-icons right")
+    .text("close");
+  var cardRevealSpan = $("<span>")
+    .addClass("card-title grey-text text-darken-4")
+    .text(drink.strDrink)
+    .append(iconClose);
 
-    var cardContentSpan = $("<span>").addClass(
-      "card-title activator grey-text text-darken-4"
-    );
-    cardContentSpan.text(drink.strDrink).append(icon);
-    cardContentDiv.append(cardContentSpan);
+  var drinkRecipe = $("<p>").text(drink.strInstructions);
+  var drinkIngredients = $("<div>").html("<b> Ingregients </b>");
+  getIngredients(drink, drinkIngredients);
 
-    var cardRevealDiv = $("<div>").addClass("card-reveal");
-    var iconClose = $("<i>")
-      .addClass("material-icons right")
-      .text("close");
-    var cardRevealSpan = $("<span>")
-      .addClass("card-title grey-text text-darken-4")
-      .text(drink.strDrink)
-      .append(iconClose);
-
-    var drinkRecipe = $("<p>").text(drink.strInstructions);
-    var drinkIngredients = $("<div>").html("<b> Ingregients </b>");
-
-    getIngredients(drink, drinkIngredients);
-    cardRevealDiv.append(cardRevealSpan, drinkRecipe, drinkIngredients);
-    drinkDiv.append(cardImgDiv, cardContentDiv, cardRevealDiv);
-
-    $(".coctailsList").append(drinkDiv);
-  });
+  cardRevealDiv.append(cardRevealSpan, drinkRecipe, drinkIngredients);
+  drinkDiv.append(cardImgDiv, cardContentDiv, cardRevealDiv);
+  return drinkDiv;
 }
 
 function getIngredients(drink, drinkIngredients) {
@@ -115,6 +105,20 @@ function getIngredients(drink, drinkIngredients) {
   }
 }
 
+function showRandom() {
+  debugger;
+  var queryURL = "https://www.thecocktaildb.com/api/json/v2/8673533/random.php";
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+    $(".coctailsList").empty();
+    var div = createCard(response);
+    $(".coctailsList").append(div);
+  });
+}
+
 function getInfo(id) {
   var queryURL =
     "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id;
@@ -122,43 +126,8 @@ function getInfo(id) {
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-    var drinks = response.drinks[0];
-    var drinkDiv = $("<div>").addClass("card");
-
-    var cardImgDiv = $("<div>").addClass(
-      "card-image waves-effect waves-block waves-light"
-    );
-    var drinkImg = $("<img>").attr("src", drinks.strDrinkThumb);
-    cardImgDiv.append(drinkImg);
-
-    var cardContentDiv = $("<div>").addClass("card-content");
-    var icon = $("<i>")
-      .addClass("material-icons right")
-      .text("more_vert");
-
-    var cardContentSpan = $("<span>")
-      .addClass("card-title activator grey-text text-darken-4")
-      .text(drinks.strDrink)
-      .append(icon);
-    cardContentDiv.append(cardContentSpan);
-
-    var cardRevealDiv = $("<div>").addClass("card-reveal");
-    var iconClose = $("<i>")
-      .addClass("material-icons right")
-      .text("close");
-    var cardRevealSpan = $("<span>")
-      .addClass("card-title grey-text text-darken-4")
-      .text(drinks.strDrink)
-      .append(iconClose);
-
-    var drinkRecipe = $("<p>").text(drinks.strInstructions);
-    var drinkIngredients = $("<div>").html("<b> Ingregients </b>");
-
-    getIngredients(drinks, drinkIngredients);
-
-    cardRevealDiv.append(cardRevealSpan, drinkRecipe, drinkIngredients);
-    drinkDiv.append(cardImgDiv, cardContentDiv, cardRevealDiv);
-    $(".coctailsList").append(drinkDiv);
+    var div = createCard(response);
+    $(".coctailsList").append(div);
   });
 }
 
@@ -198,20 +167,24 @@ function searchByIngredients(event) {
   });
 }
 
-function getPref() {}
+function getPref() {
+  $.get("/api/users/:" + id, function(data) {
+    console.log("id", data);
+    data = data;
+  });
+}
 
 function displayCarousel() {
-  debugger;
-  var prefs = getPref();
-  // var prefs = ["whiskey", "Triple sec", "campari"];
+  //debugger;
+  //var prefs = getPref();
+  var prefs = ["whiskey", "Triple sec", "campari"];
 
-  var allPromises = [];
   for (var j = 0; j < prefs.length; j++) {
     var queryURL =
       "https://www.thecocktaildb.com/api/json/v2/8673533/filter.php?i=" +
       prefs[j];
 
-    var filterPromise = $.ajax({
+    $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function(response) {
@@ -222,61 +195,20 @@ function displayCarousel() {
 
         var queryURL =
           "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id;
-        var lookupPromise = $.ajax({
+        $.ajax({
           url: queryURL,
           method: "GET"
         }).then(function(response) {
-          var drinks = response.drinks[0];
           var carouselItem = $("<div>").addClass("carousel-item");
-          var drinkDiv = $("<div>").addClass("card");
-
-          var cardImgDiv = $("<div>").addClass(
-            "card-image waves-effect waves-block waves-light"
-          );
-          var drinkImg = $("<img>").attr("src", drinks.strDrinkThumb);
-          cardImgDiv.append(drinkImg);
-
-          var cardContentDiv = $("<div>").addClass("card-content");
-          var icon = $("<i>")
-            .addClass("material-icons right")
-            .text("more_vert");
-
-          var cardContentSpan = $("<span>")
-            .addClass("card-title activator grey-text text-darken-4")
-            .text(drinks.strDrink)
-            .append(icon);
-          cardContentDiv.append(cardContentSpan);
-
-          var cardRevealDiv = $("<div>").addClass("card-reveal");
-          var iconClose = $("<i>")
-            .addClass("material-icons right")
-            .text("close");
-          var cardRevealSpan = $("<span>")
-            .addClass("card-title grey-text text-darken-4")
-            .text(drinks.strDrink)
-            .append(iconClose);
-
-          var drinkRecipe = $("<p>").text(drinks.strInstructions);
-          var drinkIngredients = $("<div>").html("<b> Ingregients </b>");
-
-          getIngredients(drinks, drinkIngredients);
-
-          cardRevealDiv.append(cardRevealSpan, drinkRecipe, drinkIngredients);
-          drinkDiv.append(cardImgDiv, cardContentDiv, cardRevealDiv);
-          carouselItem.append(drinkDiv);
+          var div = createCard(response);
+          carouselItem.append(div);
           $(".carousel").append(carouselItem);
-          console.log("dne");
         });
-        allPromises.push(lookupPromise);
       }
     });
-
-    allPromises.push(filterPromise);
   }
 
-  Promise.all(allPromises).then(function() {
-    setTimeout(() => $(".carousel").carousel(), 500);
-  });
+  setTimeout(() => $(".carousel").carousel(), 2500);
 }
 
 function onReady() {

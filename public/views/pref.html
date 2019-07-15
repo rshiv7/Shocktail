@@ -43,7 +43,7 @@
 
     <div id="modal1" class="modal modal-fixed-footer">
         <div class="modal-content">
-                <div id="okta-login-container"></div>
+            <div id="okta-login-container"></div>
         </div>
         <!-- <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
@@ -265,13 +265,13 @@
     $(document).ready(function () {
         $('.modal').modal({
             opacity: 1,
-            dismissible : false
+            dismissible: false
         });
         $('.modal').modal('open');
     });
-    
-  var oktaSignIn = new OktaSignIn({
-    baseUrl: "https://dev-575812.okta.com",
+
+    var oktaSignIn = new OktaSignIn({
+    baseUrl: "http://localhost:8080/authorization-code/callback",
     clientId: "0oavk9afauDHernym356",
     authParams: {
       issuer: "https://dev-575812.okta.com/oauth2/default",
@@ -322,31 +322,7 @@
       );
     });
   }
-  function callMessagesApi() {
-  var accessToken = oktaSignIn.tokenManager.get("accessToken");
-
-  if (!accessToken) {
-    return;
-  }
-
-  // Make the request using jQuery
-  $.ajax({
-    url: 'http://localhost:8080/api/messages',
-    headers: {
-      Authorization : 'Bearer ' + accessToken.accessToken
-    },
-    success: function(response) {
-      // Received messages!
-      console.log('Messages', response);
-    },
-    error: function(response) {
-      console.error(response);
-    }
-  });
-}
+    
 </script>
-
-
-
 
 </html>

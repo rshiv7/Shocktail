@@ -18,11 +18,14 @@
   },
   "homepage": "https://github.com/minalk24/Project2#readme",
   "dependencies": {
+    "@okta/jwt-verifier": "^1.0.0",
+    "@okta/okta-signin-widget": "^2.5.0",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "mysql": "^2.17.1",
     "mysql2": "^1.6.5",
-    "sequelize-cli": "^5.5.0"
+    "sequelize": "^5.10.1"
   }
 }

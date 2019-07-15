@@ -2,6 +2,13 @@
   /* background: url(../images/bg10.jpg) no-repeat center; */
   display: flex;
 }
+#jumbo{
+  background: url(../images/bg10.jpg) no-repeat center;
+}
+#showCocktail{
+  margin-top:15px;
+}
+
 .jumbotron h1 {
   font-size: 5em;
   font-weight: 500;

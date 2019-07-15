@@ -1,3 +1,12 @@
+function dropDown() {
+  var name = this.id;
+  if ($("#" + name + "Div").css("display") == "none") {
+    $("#" + name + "Div").show();
+  } else {
+    $("#" + name + "Div").css("display", "none");
+  }
+}
+
 function searchByName(event) {
   event.preventDefault();
 
@@ -208,11 +217,14 @@ function displayCarousel() {
     });
   }
 
-  setTimeout(() => $(".carousel").carousel(), 2500);
+  setTimeout(() => $(".carousel").carousel(), 500);
 }
 
 function onReady() {
   displayCarousel();
+  $("#dropAlco").on("click", dropDown);
+  $("#dropNonAlco").on("click", dropDown);
+  $("#dropFruits").on("click", dropDown);
 }
 
 $(onReady);

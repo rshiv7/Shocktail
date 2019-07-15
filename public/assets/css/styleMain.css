@@ -1,0 +1,61 @@
+.jumbotron {
+  /* background: url(../images/bg10.jpg) no-repeat center; */
+  display: flex;
+}
+.jumbotron h1 {
+  font-size: 5em;
+  font-weight: 900;
+}
+#dropAlcoDiv,
+#dropNonAlcoDiv,
+#dropFruitsDiv {
+  display: none;
+}
+html {
+  height: 100%;
+}
+body {
+  background: url(../images/bg1.jpg) no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  font-family: "Gruppo", sans-serif !important;
+}
+
+.dropdown {
+  margin: 20px 0;
+}
+
+.sidenav {
+  background-color: rgba(0, 56, 65, 0.7);
+  padding: 10px 60px;
+}
+.btn {
+  background-color: #ffe4c4;
+  color: black;
+  font-family: "Gruppo", sans-serif !important;
+  font-weight: 900;
+}
+
+.btn:hover {
+  background-color: #deaa88;
+}
+.material-icons {
+  color: black;
+}
+.appName {
+  display: flex;
+  justify-content: center;
+}
+
+.jumbotron span {
+  font-size: 1.8em !important;
+}
+/* 
+font-family: 'Advent Pro', sans-serif;
+font-family: 'Marcellus', serif;
+font-family: 'Gruppo', cursive;
+
+font-family: 'Inknut Antiqua', serif;
+font-family: 'Bubbler One', sans-serif;
+font-family: 'Thasadith', sans-serif;
+*/

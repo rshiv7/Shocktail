@@ -19,6 +19,10 @@
   "homepage": "https://github.com/minalk24/Project2#readme",
   "dependencies": {
     "@okta/jwt-verifier": "^1.0.0",
+<<<<<<< HEAD
+    "@okta/okta-signin-widget": "^2.5.0",
+=======
+>>>>>>> 231bed1bee6f37418be203643785df92a638fcd4
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",

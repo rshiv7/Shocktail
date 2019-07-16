@@ -17,9 +17,12 @@
     <link type="text/css" rel="stylesheet" href="../assets/css/tequila.css" />
     <link type="text/css" rel="stylesheet" href="../assets/css/beer.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
     <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -28,6 +31,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <script type="text/javascript" src="https://leaverou.github.io/prefixfree/prefixfree.min.js"></script>
+    <script type="text/javascript" src="../assets/javascript/beer.js"></script>
+    <script type="text/javascript" src="../assets/javascript/login.js"></script>
 
 
 
@@ -67,11 +72,26 @@
 
 
     <div id="modal1" class="modal modal-fixed-footer">
+        
         <div class="modal-content">
-            <div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with"
-                data-auto-logout-link="true" data-use-continue-as="true"></div>
-        </div>
-    </div>
+                <div class="box-right">
+                        <h3>Age Verification</h3>
+                        <p>By clicking enter, I certify that I am over the age of 21 and will comply with the above statement.</p>
+                        
+                        <a href="#" class="btn btn-alpha"  id="agree">Agree</a>
+                        
+                        <p class="decor-line"><span>Or</span></p>
+                        
+                        <a href="#" class="btn btn-beta" id="disagree">Disagree</a>
+                        
+                        <small>Always enjoy responsibily.</small>
+                      </div>
+                      </div>
+                    
+                    
+                    <div class="overlay-verify"></div>
+        </div> 
+    
     <div class="row">
         <div class="col s12 m12">
             <div class="jumbotron" id="jumbo">
@@ -297,7 +317,7 @@
     $(document).ready(function () {
         $('.modal').modal({
             opacity: 1,
-            // dismissible: false
+            dismissible: false
         });
         $('.modal').modal('open');
     });
@@ -325,81 +345,21 @@
 
     })
 
-    //firebase
-    var firebaseConfig = {
-        apiKey: "AIzaSyDwVVVJCmtHrHMaQ-pPqM76c81Kt4sMPEY",
-        authDomain: "shocktail-9d3bd.firebaseapp.com",
-        databaseURL: "https://shocktail-9d3bd.firebaseio.com",
-        projectId: "shocktail-9d3bd",
-        storageBucket: "",
-        messagingSenderId: "1034410380423",
-        appId: "1:1034410380423:web:c12a1a55ac4e8839"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(config);
-    var database = firebase.database();
-    googleSignIn = () => {
-        var provider = new firebase.auth.GoogleAuthProvider();
-        firebase
-            .auth()
-            .signInWithPopup(provider)
-            .then(function (result) {
-                console.log(result);
-            })
-            .catch(function (err) {
-                console.log(err);
-            });
-    };
-    var signedInUser;
-    function authStateObserver(user) {
-        signedInUser = user;
-        if (user) {
-            $("#signIn").css("display", "none");
-            $("#favorites").css("display", "block");
-            $("#out").css("display", "block");
-            $(".greet").css("display", "block");
-            $(".greet").text("Hi, " + user.displayName + "!"); //firebase api
-            console.log(user.displayName);
-            console.log("got user");
-            console.log(user);
-            listenToDb();
-        } else {
-            $("#signIn").css("display", "block");
-            $("#out").css("display", "none");
-            $(".greet").css("display", "none");
-            $("#favorites").css("display", "none");
-        }
-    }
-    firebase.auth().onAuthStateChanged(authStateObserver);
-    function logOut() {
-        firebase.auth().signOut();
-    }
-    
-    function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-    console.log(response)
-    if (response.status === 'connected') {
-        $('.modal').modal('hide');
-    }
-    else {
-        $('.modal').modal('open');
-    }
-  });
-
-}
- $(document).on("click", ".login-button", function () {
-    FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-    console.log(response)
-    if (response.status === 'connected') {
-        $('.modal').modal('hide');
-    }
-    else {
-        $('.modal').modal('open');
-    }
-  });
+    $(document).on("click", "#agree", function () {
+        $('.modal').modal('close');
     })
+
+    $(document).on("click", "#disagree", function () {
+        alert(
+            "You should be at least 21 to enter."
+        )
+    })
+
+
+
+    
+
+
 
 
 

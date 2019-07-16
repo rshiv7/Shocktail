@@ -3,8 +3,8 @@ var db = require("../models");
 module.exports = function(app) {
     app.get("/api/pref", function(req, res) {
         var query = {};
-        if (req.query.user_id) {
-            query.userId = req.query.user_id;
+        if (req.query.id) {
+            query.id = req.query.id;
         }
         db.Pref.findAll({
             where: query,

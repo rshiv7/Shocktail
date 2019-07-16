@@ -44,7 +44,7 @@ var nonAlcoholic = [
 var fruits = ["orange", "banana", "lemon", "lime", "pineapple", "strawberries"];
 
 function createInput(array, name) {
-  debugger;
+  // debugger;
   for (var i = 0; i < array.length; i++) {
     var newLabel = $("<label>");
     var newInput = $("<input>")
@@ -76,7 +76,8 @@ function searchByName(event) {
     $(".column").empty();
     console.log(response);
     var drinks = response.drinks;
-    if (drinks == "None Found") {
+    debugger;
+    if (drinks == null) {
       var img = $("<img>")
         .attr("src", "../assets/images/sad-cartoon-margarita.png")
         .css({ width: "50%", clear: "both" });
@@ -90,6 +91,9 @@ function searchByName(event) {
 
         $($(".column")[i % 2]).append(div);
       }
+      var coctailsList = document.getElementById("coctailsList");
+
+      coctailsList.scrollIntoView(true);
     }
   });
 }
@@ -150,7 +154,7 @@ function getIngredients(drink, drinkIngredients) {
 }
 
 function showRandom() {
-  debugger;
+  //debugger;
   var queryURL = "https://www.thecocktaildb.com/api/json/v2/8673533/random.php";
 
   $.ajax({
@@ -190,6 +194,10 @@ function getInfo(id, i) {
     var div = createCard(response.drinks[0]);
 
     $($(".column")[i % 2]).append(div);
+    debugger;
+    var coctailsList = document.getElementById("coctailsList");
+
+    coctailsList.scrollIntoView(true);
   });
 }
 

@@ -10,7 +10,7 @@
 .jumbotron h1 {
   font-size: 5em;
   font-weight: 500;
-  text-shadow: 2px 2px 4px #000000;
+  text-shadow: 2px 2px 10px #240935;
   margin-bottom: 0;
 }
 #dropAlcoDiv,
@@ -31,7 +31,12 @@ body {
 .dropdown {
   margin: 20px 0;
 }
-
+#results,
+#shocked {
+  background-color: #240935;
+  color: #ffe4c4;
+  font-weight: bold;
+}
 .sidenav {
   background-color: rgba(0, 56, 65, 0.7);
   padding: 10px 60px;

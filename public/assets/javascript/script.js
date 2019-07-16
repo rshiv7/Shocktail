@@ -1,4 +1,5 @@
 function dropDown() {
+  debugger;
   var name = this.id;
   if ($("#" + name + "Div").css("display") == "none") {
     $("#" + name + "Div").show();
@@ -6,7 +7,56 @@ function dropDown() {
     $("#" + name + "Div").css("display", "none");
   }
 }
+var alcoholic = [
+  "vodka",
+  "gin",
+  "rum",
+  "teqyila",
+  "whiskey",
+  "red_wine",
+  "triple_sec",
+  "jagermeister",
+  "kahlua",
+  "cointreau",
+  "campari",
+  "champagne",
+  "vermouth",
+  "brandy",
+  "amaretto",
+  "ginger_ale"
+];
+var nonAlcoholic = [
+  "soda_water",
+  "coffee",
+  "coca_cola",
+  "sweet_and_sour",
+  "cream",
+  "milk",
+  "grenadine",
+  "red_wine",
+  "grapefruit_juice",
+  "apple_juice",
+  "orange_juice",
+  "pineapple_juice",
+  "cranberry_juice",
+  "sugar_syrup"
+];
+var fruits = ["orange", "banana", "lemon", "lime", "pineapple", "strawberries"];
 
+function createInput(array, name) {
+  debugger;
+  for (var i = 0; i < array.length; i++) {
+    var newLabel = $("<label>");
+    var newInput = $("<input>")
+      .addClass("ing")
+      .attr("type", "checkbox")
+      .val(array[i]);
+    var br = $("<br>");
+    var newSpan = $("<span>").text(array[i].replace(/_/g, " "));
+    newLabel.append(newInput, newSpan, br);
+    $("#" + name).append(newLabel);
+  }
+}
 function searchByName(event) {
   event.preventDefault();
 
@@ -27,11 +77,10 @@ function searchByName(event) {
     console.log(response);
     var drinks = response.drinks;
     if (drinks == "None Found") {
-      var img = $("<img>").attr(
-        "src",
-        "../assets/images/sad-cartoon-margarita.png"
-      );
-      $(".coctailsList")
+      var img = $("<img>")
+        .attr("src", "../assets/images/sad-cartoon-margarita.png")
+        .css({ width: "50%", clear: "both" });
+      $("#col1")
         .empty()
         .html("<h4>None Found</h4>")
         .append(img);
@@ -41,9 +90,6 @@ function searchByName(event) {
 
         $($(".column")[i % 2]).append(div);
       }
-
-      //  $($(".column")[index % 2]).append(div);
-      // $(".coctailsList").append(drinkDiv);
     }
   });
 }
@@ -230,6 +276,9 @@ function displayCarousel() {
 }
 
 function onReady() {
+  createInput(alcoholic, "alcoholic");
+  createInput(nonAlcoholic, "nonAlcoholic");
+  createInput(fruits, "fruits");
   displayCarousel();
   $("#dropAlco").on("click", dropDown);
   $("#dropNonAlco").on("click", dropDown);

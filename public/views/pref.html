@@ -17,6 +17,9 @@
     <link type="text/css" rel="stylesheet" href="../assets/css/tequila.css" />
     <link type="text/css" rel="stylesheet" href="../assets/css/beer.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -31,14 +34,44 @@
 </head>
 
 <body>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=378290079456982&autoLogAppEvents=1"></script>
+
+
+    <script>
+
+
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '752586611840658',
+                cookie: true,
+                xfbml: true,
+                version: 'v3.3'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+    </script>
 
 
     <div id="modal1" class="modal modal-fixed-footer">
-        <div class="modal-content"></div>
-        <
-        
+        <div class="modal-content">
+            <div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with"
+                data-auto-logout-link="true" data-use-continue-as="true"></div>
+        </div>
     </div>
-
     <div class="row">
         <div class="col s12 m12">
             <div class="jumbotron" id="jumbo">
@@ -293,55 +326,80 @@
     })
 
     //firebase
-var config = {
-  apiKey: "AIzaSyC4Oa03PsGzQVoElWaQhppeLBDxINlYfYk",
-  authDomain: "pinme-270ea.firebaseapp.com",
-  databaseURL: "https://pinme-270ea.firebaseio.com",
-  projectId: "pinme-270ea",
-  storageBucket: "pinme-270ea.appspot.com",
-  messagingSenderId: "806008211699",
-  appId: "1:806008211699:web:f94ec750052f45f3"
-};
-// Initialize Firebase
-firebase.initializeApp(config);
-var database = firebase.database();
-googleSignIn = () => {
-  var provider = new firebase.auth.GoogleAuthProvider();
-  firebase
-    .auth()
-    .signInWithPopup(provider)
-    .then(function(result) {
-      console.log(result);
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
-};
-var signedInUser;
-function authStateObserver(user) {
-  signedInUser = user;
-  if (user) {
-    $("#signIn").css("display", "none");
-    $("#favorites").css("display", "block");
-    $("#out").css("display", "block");
-    $(".greet").css("display", "block");
-    $(".greet").text("Hi, " + user.displayName + "!"); //firebase api
-    console.log(user.displayName);
-    console.log("got user");
-    console.log(user);
-    listenToDb();
-  } else {
-    $("#signIn").css("display", "block");
-    $("#out").css("display", "none");
-    $(".greet").css("display", "none");
-    $("#favorites").css("display", "none");
-  }
-}
-firebase.auth().onAuthStateChanged(authStateObserver);
-function logOut() {
-  firebase.auth().signOut();
-}
+    var firebaseConfig = {
+        apiKey: "AIzaSyDwVVVJCmtHrHMaQ-pPqM76c81Kt4sMPEY",
+        authDomain: "shocktail-9d3bd.firebaseapp.com",
+        databaseURL: "https://shocktail-9d3bd.firebaseio.com",
+        projectId: "shocktail-9d3bd",
+        storageBucket: "",
+        messagingSenderId: "1034410380423",
+        appId: "1:1034410380423:web:c12a1a55ac4e8839"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(config);
+    var database = firebase.database();
+    googleSignIn = () => {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        firebase
+            .auth()
+            .signInWithPopup(provider)
+            .then(function (result) {
+                console.log(result);
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+    };
+    var signedInUser;
+    function authStateObserver(user) {
+        signedInUser = user;
+        if (user) {
+            $("#signIn").css("display", "none");
+            $("#favorites").css("display", "block");
+            $("#out").css("display", "block");
+            $(".greet").css("display", "block");
+            $(".greet").text("Hi, " + user.displayName + "!"); //firebase api
+            console.log(user.displayName);
+            console.log("got user");
+            console.log(user);
+            listenToDb();
+        } else {
+            $("#signIn").css("display", "block");
+            $("#out").css("display", "none");
+            $(".greet").css("display", "none");
+            $("#favorites").css("display", "none");
+        }
+    }
+    firebase.auth().onAuthStateChanged(authStateObserver);
+    function logOut() {
+        firebase.auth().signOut();
+    }
+    
+    function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+    console.log(response)
+    if (response.status === 'connected') {
+        $('.modal').modal('hide');
+    }
+    else {
+        $('.modal').modal('open');
+    }
+  });
 
+}
+ $(document).on("click", ".login-button", function () {
+    FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+    console.log(response)
+    if (response.status === 'connected') {
+        $('.modal').modal('hide');
+    }
+    else {
+        $('.modal').modal('open');
+    }
+  });
+    })
 
 
 

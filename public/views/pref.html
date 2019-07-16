@@ -17,15 +17,16 @@
     <link type="text/css" rel="stylesheet" href="../assets/css/tequila.css" />
     <link type="text/css" rel="stylesheet" href="../assets/css/beer.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   
+    <!-- js file -->
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-    
 
-    <!-- Compiled and minified CSS -->
+
+    <!-- materalize Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--materalize js file -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -34,19 +35,13 @@
     <script type="text/javascript" src="../assets/javascript/beer.js"></script>
     <script type="text/javascript" src="../assets/javascript/login.js"></script>
 
-
-
 </head>
 
 <body>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.3&appId=378290079456982&autoLogAppEvents=1"></script>
-
-
     <script>
-
-
 
         window.fbAsyncInit = function () {
             FB.init({
@@ -72,26 +67,27 @@
 
 
     <div id="modal1" class="modal modal-fixed-footer">
-        
+
         <div class="modal-content">
-                <div class="box-right">
-                        <h3>Age Verification</h3>
-                        <p>By clicking enter, I certify that I am over the age of 21 and will comply with the above statement.</p>
-                        
-                        <a href="#" class="btn btn-alpha"  id="agree">Agree</a>
-                        
-                        <p class="decor-line"><span>Or</span></p>
-                        
-                        <a href="#" class="btn btn-beta" id="disagree">Disagree</a>
-                        
-                        <small>Always enjoy responsibily.</small>
-                      </div>
-                      </div>
-                    
-                    
-                    <div class="overlay-verify"></div>
-        </div> 
-    
+            <div class="box-right">
+                <h3>Age Verification</h3>
+                <p>By clicking enter, I certify that I am over the age of 21 and will comply with the above statement.
+                </p>
+
+                <a href="#" class="btn btn-alpha" id="agree">Agree</a>
+
+                <p class="decor-line"><span>Or</span></p>
+
+                <a href="#" class="btn btn-beta" id="disagree">Disagree</a>
+
+                <small>Always enjoy responsibily.</small>
+            </div>
+        </div>
+
+
+        <div class="overlay-verify"></div>
+    </div>
+
     <div class="row">
         <div class="col s12 m12">
             <div class="jumbotron" id="jumbo">
@@ -212,22 +208,55 @@
                         <span class="card-title grey-text text-darken-4">Alcoholic<i
                                 class="material-icons right">close</i></span>
 
-                        <div class="container" id="prefb">
-                            <div class="row"></div>
-                            <a class="waves-effect waves-light btn-small" data-bool="0" data-id="vodka">Vodka</a>
-                            <a class="waves-effect waves-light btn-small" data-bool="0" data-id="gin">Gin</a>
-                            <a class="waves-effect waves-light btn-small" data-bool="0" data-id="rum">Rum</a>
-                            <br><br>
-                            <a class="waves-effect waves-light btn-small" data-bool="0" data-id="tequila">Tequila</a>
-                            <a class="waves-effect waves-light btn-small" data-bool="0" data-id="whiskey">Whiskey</a>
-                            <a class="waves-effect waves-light btn-small" data-bool="0" data-id="triple_sec">Triple
-                                Sec</a>
-                            <br><br>
-                            <a class="waves-effect waves-light btn-small" data-bool="0"
-                                data-id="jagermeister">Jagermeister</a>
-                            <a class="waves-effect waves-light btn-small" data-bool="0" data-id="kahlua">Kahlua</a>
-                            <a class="waves-effect waves-light btn-small" data-bool="0"
-                                data-id="champagne">Champagne</a>
+                        <div class="container-fluid" id="alcoholicBtn">
+
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="0">Vodka</a>
+                                </div>
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="1">Rum</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="2">Tequila</a>
+                                </div>
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="3">Gin</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="4">Triple
+                                        Sec</a>
+                                </div>
+                                <div class="col s6">
+
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="5">Whiskey</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="6">Kahlua</a>
+                                </div>
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0"
+                                        data-id="7">Champagne</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0"
+                                        data-id="8">Jagermeister</a>
+                                </div>
+                                <div class="col s6">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -357,7 +386,7 @@
 
 
 
-    
+
 
 
 

@@ -14,14 +14,6 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false
             }
         },
-        age: {
-            type: DataTypes.INTEGER,
-            validate: {
-                allowNull: false,
-                notEmpty: true,
-                min: 21
-            }
-        },
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,

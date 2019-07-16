@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 /* #cock {
+=======
+#cock {
+>>>>>>> 365926c0b0b06d15af734f0855717a84d7324983
     position: absolute;
     left: 47.5%;
     top: 47.5%;
@@ -9,6 +13,7 @@
 #glassHeight {
     height: 255px;
     width: 100px;
+<<<<<<< HEAD
 } */
 
 .card-image{
@@ -55,3 +60,6 @@
     background-color: rgba(0, 56, 65);
     border-radius: 50px;
 }
+=======
+}
+>>>>>>> 365926c0b0b06d15af734f0855717a84d7324983

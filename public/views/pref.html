@@ -17,55 +17,85 @@
     <link type="text/css" rel="stylesheet" href="../assets/css/tequila.css" />
     <link type="text/css" rel="stylesheet" href="../assets/css/beer.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- js file -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 
-    <!-- Compiled and minified CSS -->
+
+    <!-- materalize Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.16.0/css/okta-sign-in.min.css"
-        type="text/css" rel="stylesheet" />
-    <link href="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.16.0/css/okta-theme.css"
-        type="text/css" rel="stylesheet" />
+    <!--materalize js file -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript" src="../assets/javascript/beer.js"></script>
-    <script src="https://ok1static.oktacdn.com/assets/js/sdk/okta-signin-widget/2.16.0/js/okta-sign-in.min.js"
-        type="text/javascript"></script>
 
     <script type="text/javascript" src="https://leaverou.github.io/prefixfree/prefixfree.min.js"></script>
-
-
+    <script type="text/javascript" src="../assets/javascript/auth.js"></script>
+    <script type="text/javascript" src="../assets/javascript/login.js"></script>
 
 </head>
 
 <body>
+   
 
 
-    <div id="modal1" class="modal modal-fixed-footer">
+    <!-- <div id="modal1" class="modal modal-fixed-footer">
+
         <div class="modal-content">
-                <div id="okta-login-container"></div>
+            <div class="box-right">
+                <h3>Age Verification</h3>
+                <p>By clicking enter, I certify that I am over the age of 21 and will comply with the above statement.
+                </p>
+
+                <a href="#" class="btn btn-alpha" id="agree">Agree</a>
+
+                <p class="decor-line"><span>Or</span></p>
+
+                <a href="#" class="btn btn-beta" id="disagree">Disagree</a>
+
+                <small>Always enjoy responsibily.</small>
+            </div>
         </div>
-        <!-- <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div> -->
+
+        <div class="overlay-verify"></div>
+    </div> -->
+
+    <!-- Modal Trigger -->
+  <!-- <a id="modal1" class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a> -->
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Age Verification</h4>
+      <p>By clicking enter, I certify that I am over the age of 21 and will comply with the above statement.
+    </p>
+    </div>
+    <div class="modal-footer"> 
+     
+      <a href="#" class="btn btn-alpha modal-close waves-effect waves-green btn-flat" id="agree">Agree</a>
+      <a href="#" class="btn btn-beta modal-close waves-effect waves-green btn-flat" id="disagree">Disagree</a>
+    </div>
+  </div>
+          
+
+    <div class="row">
+        <div class="col s12 m12">
+            <div class="jumbotron" id="jumbo">
+                <div class="container">
+                    <div class="appName">
+                        <img src="../assets/images/icon1.png" alt="">
+                        <h1 class="black-text  ">SHOCKTAIL</h1>
+                    </div>
+                </div>
+
+            </div>
+        </div>
     </div>
 
     <div class="container">
-        <div class="row">
-            <div class="col s12 m12">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                        <span class="card-title">Card Title</span>
-                        <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#">This is a link</a>
-                        <a href="#">This is a link</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
         <div class="row">
             <div class="col s12 m4">
@@ -162,27 +192,63 @@
                             src="https://www.tracysnewyorklife.com/wp-content/uploads/2019/05/liquor-bottles-400x400.jpeg">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Card Title<i
+                        <span class="card-title activator grey-text text-darken-4">Alcoholic<i
                                 class="material-icons right">more_vert</i></span>
-                        <p><a href="#">This is a link</a></p>
+                        <!-- <p><a href="#">This is a link</a></p> -->
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Card Title<i
+                        <span class="card-title grey-text text-darken-4">Alcoholic<i
                                 class="material-icons right">close</i></span>
 
-                        <div class="container" id="prefb">
+                        <div class="container-fluid" id="alcoholicBtn">
 
-                            <a class="waves-effect waves-light btn-small">Button</a>
-                            <a class="waves-effect waves-light btn-small">Button</a>
-                            <a class="waves-effect waves-light btn-small">Button</a>
-                            <br><br>
-                            <a class="waves-effect waves-light btn-small">Button</a>
-                            <a class="waves-effect waves-light btn-small">Button</a>
-                            <a class="waves-effect waves-light btn-small">Button</a>
-                            <br><br>
-                            <a class="waves-effect waves-light btn-small">Button</a>
-                            <a class="waves-effect waves-light btn-small">Button</a>
-                            <a class="waves-effect waves-light btn-small">Button</a>
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="0">Vodka</a>
+                                </div>
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="1">Rum</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="2">Tequila</a>
+                                </div>
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="3">Gin</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="4">Triple
+                                        Sec</a>
+                                </div>
+                                <div class="col s6">
+
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="5">Whiskey</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="6">Kahlua</a>
+                                </div>
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0"
+                                        data-id="7">Champagne</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0"
+                                        data-id="8">Jagermeister</a>
+                                </div>
+                                <div class="col s6">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -194,24 +260,46 @@
                             src="https://southboundvapes.com/wp-content/uploads/2016/06/LEMONLIME-600x600.jpg">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Card Title<i
+                        <span class="card-title activator grey-text text-darken-4">Fruits<i
                                 class="material-icons right">more_vert</i></span>
-                        <p><a href="#">This is a link</a></p>
+                        <!-- <p><a href="#">This is a link</a></p> -->
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Card Title<i
+                        <span class="card-title grey-text text-darken-4">Fruits<i
                                 class="material-icons right">close</i></span>
-                        <a class="waves-effect waves-light btn-small">Button</a>
-                        <a class="waves-effect waves-light btn-small">Button</a>
-                        <a class="waves-effect waves-light btn-small">Button</a>
-                        <br><br>
-                        <a class="waves-effect waves-light btn-small">Button</a>
-                        <a class="waves-effect waves-light btn-small">Button</a>
-                        <a class="waves-effect waves-light btn-small">Button</a>
-                        <br><br>
-                        <a class="waves-effect waves-light btn-small">Button</a>
-                        <a class="waves-effect waves-light btn-small">Button</a>
-                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <div class="container-fluid" id="fruitsBtn">
+
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="9">Orange</a>
+                                </div>
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="10">Banana</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="11">Lemon</a>
+                                </div>
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0"
+                                        data-id="12">Pineapple</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="13">Lime</a>
+
+                                </div>
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0"
+                                        data-id="14">Strawberry</a>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -222,24 +310,72 @@
                             src="https://gd.image-gmkt.com/MONIN-SYRUP-700ML-1000ML/li/946/601/804601946.g_400-w_g.jpg">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Card Title<i
+                        <span class="card-title activator grey-text text-darken-4">Non-Alcoholic<i
                                 class="material-icons right">more_vert</i></span>
-                        <p><a href="#">This is a link</a></p>
+                        <!-- <p><a href="#">This is a link</a></p> -->
+
                     </div>
                     <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Card Title<i
+                        <span class="card-title grey-text text-darken-4">Non-Alcoholic<i
                                 class="material-icons right">close</i></span>
-                        <a class="waves-effect waves-light btn-small">Button</a>
-                        <a class="waves-effect waves-light btn-small">Button</a>
-                        <a class="waves-effect waves-light btn-small">Button</a>
-                        <br><br>
-                        <a class="waves-effect waves-light btn-small">Button</a>
-                        <a class="waves-effect waves-light btn-small">Button</a>
-                        <a class="waves-effect waves-light btn-small">Button</a>
-                        <br><br>
-                        <a class="waves-effect waves-light btn-small">Button</a>
-                        <a class="waves-effect waves-light btn-small">Button</a>
-                        <a class="waves-effect waves-light btn-small">Button</a>
+                        <div class="container-fluid" id="nonAlcoholicBtn">
+
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="15">Cream</a>
+                                </div>
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="16">Orange
+                                        Juice</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="milk">Milk</a>
+                                </div>
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="17">Cranberry
+                                        Juice</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="18">Soda
+                                        Water</a>
+
+                                </div>
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="19"> Coffee
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="20">
+                                        Coca-Cola</a>
+
+                                </div>
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0" data-id="21">Sugar
+                                        Syrup</a>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col s6">
+                                    <a class="waves-effect waves-light btn-small" data-bool="0"
+                                        data-id="22">Grenadine</a>
+
+                                </div>
+                                <div class="col s6">
+
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -259,91 +395,80 @@
         </div>
 
 
+    </div>
+    <button class="btn waves-effect waves-light" type="submit" id="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+    </button>
+
+    <script type="text/javascript" src="../assets/javascript/auth.js"></script>
+     <!-- random pick -->
+  <script>
+    // var cocktailArray = ['Vodka', 'Rum', 'Tequila', 'Gin', 'Triple Sec', 'Whiskey', 'Kahlua', 'Champagne', 'Jagermeister', 'Orange', 'Banana', 'Lemon', 'Pineapple', 'Lime', 'Strawberry', 'Cream', 'orange Juice', 'Milk', 'Cranberry Juice', 'Soda Water', 'Coffee', 'Coca-Cola', 'Sugar Syrup', 'Grenadine'];
+        var boolArray = [];
+        for (var i = 0; i < 27; i++) {
+            var currentBool = $(this).attr("data-id=" + " " + i + " ");
+            var currentPref = currentBool.attr("data-bool");
+            boolArray.push(currentPref);
+        }
+        console.log(currentPref);
+</script>
+
 </body>
 
 <script>
     $(document).ready(function () {
         $('.modal').modal({
             opacity: 1,
-            dismissible : false
+            dismissible: false
         });
         $('.modal').modal('open');
     });
-    
-  var oktaSignIn = new OktaSignIn({
-    baseUrl: "https://dev-575812.okta.com",
-    clientId: "0oavk9afauDHernym356",
-    authParams: {
-      issuer: "https://dev-575812.okta.com/oauth2/default",
-      responseType: ['token', 'id_token'],
-      display: 'page'
-    }
-  });
-  if (oktaSignIn.token.hasTokensInUrl()) {
-    oktaSignIn.token.parseTokensFromUrl(
-      function success(res) {
-        // The tokens are returned in the order requested by `responseType` above
-        var accessToken = res[0];
-        var idToken = res[1]
 
-        // Say hello to the person who just signed in:
-        console.log('Hello, ' + idToken.claims.email);
+    $(document).on("click", "#submit", function () {
+        href = ""
+    })
 
-        // Save the tokens for later use, e.g. if the page gets refreshed:
-        oktaSignIn.tokenManager.add('accessToken', accessToken);
-        oktaSignIn.tokenManager.add('idToken', idToken);
+    $(document).on("click", ".btn-small", function () {
+        console.log("hello");
+        var bool = $(this).attr("data-bool");
+        if (bool === "0") {
 
-        // Remove the tokens from the window location hash
-        window.location.hash='';
-      },
-      function error(err) {
-        // handle errors as needed
-        console.error(err);
-      }
-    );
-  } else {
-    oktaSignIn.session.get(function (res) {
-      // Session exists, show logged in state.
-      if (res.status === 'ACTIVE') {
-        console.log('Welcome back, ' + res.login);
-        return;
-      }
-      // No session, show the login form
-      oktaSignIn.renderEl(
-        { el: '#okta-login-container' },
-        function success(res) {
-          // Nothing to do in this case, the widget will automatically redirect
-          // the user to Okta for authentication, then back to this page if successful
-        },
-        function error(err) {
-          // handle errors as needed
-          console.error(err);
+            $(this).attr("data-bool", "1")
+            $(this).addClass("red");
+            bool = $(this).attr("data-bool");
+            console.log(bool);
         }
-      );
-    });
-  }
-  function callMessagesApi() {
-  var accessToken = oktaSignIn.tokenManager.get("accessToken");
+        else {
+            $(this).attr("data-bool", "0")
+            $(this).removeClass("red");
+            bool = $(this).attr("data-bool");
+            console.log(bool);
+        }
 
-  if (!accessToken) {
-    return;
-  }
+    })
 
-  // Make the request using jQuery
-  $.ajax({
-    url: 'http://localhost:8080/api/messages',
-    headers: {
-      Authorization : 'Bearer ' + accessToken.accessToken
-    },
-    success: function(response) {
-      // Received messages!
-      console.log('Messages', response);
-    },
-    error: function(response) {
-      console.error(response);
-    }
-  });
-}
+    $(document).on("click", "#agree", function () {
+        $('.modal').modal('close');
+    })
+
+    $(document).on("click", "#disagree", function () {
+        alert(
+            "You should be at least 21 to enter.",
+            
+            
+        )
+        $('.modal').modal('open');
+        
+    })
+
+
+
+
+
+
+
+
+
 </script>
 
 

@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             validate: {
                 allowNull: false,
-                notNull: true
+                // notNull: true
             }
         },
         id: {
@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
         Cocktail.belongsTo(models.User, {
             foreignKey: {
                 allowNull: false,
-                notNull: true
+                // notNull: true
             }
         });
     };

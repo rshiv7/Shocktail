@@ -11,5 +11,5 @@ module.exports = function(app) {
         }).then(function(dbCocktail) {
             res.json(dbCocktail);
         });
-    }
+    });
 }

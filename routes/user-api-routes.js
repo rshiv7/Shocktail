@@ -5,14 +5,14 @@ module.exports = function(app){
 
     // Find all users and return to user as a json object
     app.get("/api/users", function(req, res){
-        db.user.findAll({}).then(function(dbUser){
+        db.User.findAll({}).then(function(dbUser){
             res.json(dbUser);
         });
     });
 
     // Find one user with id in req.params.id and return as json object
     app.get("/api/users/:id", function(req, res) {
-        db.user.findOne({
+        db.User.findOne({
             where: {
                 id: req.params.id
             }
@@ -23,7 +23,13 @@ module.exports = function(app){
 
     // Adds a new user to the model in mysql
     app.post("/api/users", function(req, res){
-        db.user.create(req.body).then(function(dbUser){
+        var username = req.body.username;
+        var password = req.body.password;
+        console.log(username, password);
+        db.User.create({
+            username: username, 
+            password: password
+        }).then(function(dbUser){
             res.json(dbUser);
         });
     });

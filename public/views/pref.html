@@ -396,9 +396,9 @@
 
 
     </div>
-    <button class="btn waves-effect waves-light" type="submit" id="submit" name="action">Submit
+    <a href = "/main" class="btn waves-effect waves-light" type="submit" id="submit" name="action">Submit
         <i class="material-icons right">send</i>
-    </button>
+    </a>
 
     <script type="text/javascript" src="../assets/javascript/auth.js"></script>
      <!-- random pick -->
@@ -425,7 +425,12 @@
     });
 
     $(document).on("click", "#submit", function () {
-        href = ""
+
+        $.post("/api/pref", function(req, res) {
+            
+        })
+
+        window.location = "/main";
     })
 
     $(document).on("click", ".btn-small", function () {

@@ -27,8 +27,7 @@ $("#sign-up").on("click", function (event) {
         {
             username: username,
             password: password
-        },
-        function (data, status) {
+        }).then(function (data, status) {
             alert("Data: " + data + "\nStatus: " + status);
         });
 

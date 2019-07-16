@@ -22,45 +22,34 @@ function searchByName(event) {
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).then(function(response, index) {
-    $(".coctailsList").empty();
+  }).then(function(response) {
+    $(".column").empty();
     console.log(response);
     var drinks = response.drinks;
     if (drinks == "None Found") {
-      var img = $(".img").attr("src", "sad-cartoon-margarita.png");
+      var img = $("<img>").attr(
+        "src",
+        "../assets/images/sad-cartoon-margarita.png"
+      );
       $(".coctailsList")
         .empty()
         .html("<h4>None Found</h4>")
         .append(img);
     } else {
       for (var i = 0; i < drinks.length; i++) {
-        var drink = drinks[i];
-        var drinkDiv = $("<div>").addClass("card");
+        var div = createCard(drinks[i]);
 
-        var cardImgDiv = $("<div>").addClass("card-image");
-        var drinkImg = $("<img>").attr("src", drink.strDrinkThumb);
-        cardImgDiv.append(drinkImg);
-
-        var cardContentDiv = $("<div>").addClass("card-content");
-        var drinkName = $("<span>")
-          .addClass("card-title")
-          .text(drink.strDrink);
-
-        var drinkRecipe = $("<p>").text(drink.strInstructions);
-        var drinkIngredients = $("<div>").html("<b> Ingregients </b>");
-        getIngredients(drink, drinkIngredients);
+        $($(".column")[i % 2]).append(div);
       }
 
-      cardContentDiv.append(drinkName, drinkRecipe, drinkIngredients);
-      drinkDiv.append(cardImgDiv, cardContentDiv);
       //  $($(".column")[index % 2]).append(div);
-      $(".coctailsList").append(drinkDiv);
+      // $(".coctailsList").append(drinkDiv);
     }
   });
 }
 
-function createCard(response) {
-  var drink = response.drinks[0];
+function createCard(drink) {
+  // var drink = response.drinks[0];
   var drinkDiv = $("<div>").addClass("card");
 
   var cardImgDiv = $("<div>").addClass(
@@ -130,7 +119,7 @@ function showRandom() {
       .empty()
       .show()
       .css("zIndex", 11);
-    var div = createCard(response);
+    var div = createCard(response.drinks[0]);
     var iconClosePop = $("<i>")
       .addClass("material-icons right ")
       .attr("id", "iconClosePop")
@@ -145,16 +134,16 @@ function showRandom() {
   });
 }
 
-function getInfo(id, index) {
+function getInfo(id, i) {
   var queryURL =
     "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + id;
   $.ajax({
     url: queryURL,
     method: "GET"
   }).then(function(response) {
-    var div = createCard(response);
-    // $(".coctailsList").append(div);
-    $($(".column")[index % 2]).append(div);
+    var div = createCard(response.drinks[0]);
+
+    $($(".column")[i % 2]).append(div);
   });
 }
 
@@ -180,15 +169,17 @@ function searchByIngredients(event) {
     debugger;
     var drinks = response.drinks;
     if (drinks == "None Found") {
-      var img = $(".img").attr("src", "sad-cartoon-margarita.png");
-      $(".coctailsList")
+      var img = $("<img>")
+        .attr("src", "../assets/images/sad-cartoon-margarita.png")
+        .css({ width: "50%", clear: "both" });
+      $("#col1")
         .empty()
         .html("<h4>None Found</h4>")
         .append(img);
     } else {
       for (var i = 0; i < drinks.length; i++) {
         var id = drinks[i].idDrink;
-        getInfo(id, index);
+        getInfo(id, i);
       }
     }
   });
@@ -227,7 +218,7 @@ function displayCarousel() {
           method: "GET"
         }).then(function(response) {
           var carouselItem = $("<div>").addClass("carousel-item");
-          var div = createCard(response);
+          var div = createCard(response.drinks[0]);
           carouselItem.append(div);
           $(".carousel").append(carouselItem);
         });

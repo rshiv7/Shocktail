@@ -220,17 +220,17 @@
 
             </div>
         </div>
-        <div class="container">
 
-              
-        <!-- display result -->
+
+        <div class="container">        
+       
         <div class="carousel"></div>
 
            <!-- searchbar which cocktail do you want -->
            <div class="searchBar">
-                <form class="col ">
-                    <div class="row ">
-                        <div class="input-field col">
+                <form >
+                    <div class="row searchRow">
+                        <div class="input-field">
                             <input id="usersInputName" type="text">
                             <label for="usersInputName">what coctail do you want to make?</label>
                         </div>
@@ -241,44 +241,33 @@
                 </form>
 
 
-                <!--shocktail drink  -->
+               
                 <div class="row randomDrink">
-                        <button type="submit" class="btn btn-outline-dark waves-effect waves-light" onclick="showRandom()">
+                        <button type="submit" class="btn btn-outline-dark waves-effect waves-light" id="shocked" onclick="showRandom()">
                             Shocktail Me
                         </button>
                       
                     </div>
             </div>
         
-        <div class="coctailsList">
-           
-            </div>
+             <!-- display result -->
+        <div class="coctailsList">     
+
+            <div class="column" id='col1' ></div>
             <div class="column"></div>
-            <div class="column"></div>
-
-        </div>
-
-
-        
+        </div>       
     </div>
-
-
-
 
     <script src="../assets/javascript/script.js"></script>
 
     <script>
         $(document).ready(function () {
-            $('.sidenav').sidenav();
-
-           
+            $('.sidenav').sidenav();    
         });
-
-       
-
-    
     </script>
-     <div class="popUp">
+
+ <!--shocktail drink  -->
+     <div class="popUp"> </div>
                  
 </body>
 

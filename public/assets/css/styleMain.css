@@ -2,9 +2,7 @@
   /* background: url(../images/bg10.jpg) no-repeat center; */
   display: flex;
 }
-#jumbo {
-  background: url(../images/bg10.jpg) no-repeat center;
-}
+
 #showCocktail {
   margin-top: 15px;
 }
@@ -24,7 +22,7 @@ html {
   height: 100%;
 }
 body {
-  background: url(../images/bg1.jpg) no-repeat;
+  background: url(../images/bg1.jpg);
   background-size: cover;
   background-position: center bottom;
   font-family: "Gruppo", sans-serif !important;
@@ -75,7 +73,7 @@ body {
   display: flex;
 
   justify-content: center;
-  min-width: 600px;
+  /* min-width: 600px; */
 }
 
 .card {
@@ -100,7 +98,7 @@ body {
 }
 
 .carousel {
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   padding-top: 0;
   margin-top: -40px !important;
 }
@@ -108,16 +106,21 @@ body {
 .popUp {
   position: fixed;
 
-  height: 30%;
-  width: 30%;
-  left: 30%;
+  height: 40%;
+  width: 40%;
+  left: 35%;
   top: 20%;
   border-radius: 10px;
 }
 
-.coctailsList .card {
-  width: 30%;
-  height: 30%;
+.coctailsList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+.column {
+  flex: 1;
+  margin: 5px;
 }
 
 #iconClosePop {
@@ -129,12 +132,28 @@ body {
   z-index: 12;
   cursor: pointer;
 }
-/* 
-font-family: 'Advent Pro', sans-serif;
-font-family: 'Marcellus', serif;
-font-family: 'Gruppo', cursive;
 
-font-family: 'Inknut Antiqua', serif;
-font-family: 'Bubbler One', sans-serif;
-font-family: 'Thasadith', sans-serif;
-*/
+.coctailSearch h4 {
+  color: #ffe4c4;
+}
+
+@media only screen and (max-width: 600px) {
+  .logo {
+    display: none;
+  }
+  .coctailsList {
+    flex-direction: column;
+  }
+  .column {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .coctailsList {
+    flex-direction: column;
+  }
+  .column {
+    width: 100%;
+  }
+}

@@ -409,6 +409,18 @@
     </button>
 
     <script type="text/javascript" src="../assets/javascript/beer.js"></script>
+     <!-- random pick -->
+  <script>
+    // var cocktailArray = ['Vodka', 'Rum', 'Tequila', 'Gin', 'Triple Sec', 'Whiskey', 'Kahlua', 'Champagne', 'Jagermeister', 'Orange', 'Banana', 'Lemon', 'Pineapple', 'Lime', 'Strawberry', 'Cream', 'orange Juice', 'Milk', 'Cranberry Juice', 'Soda Water', 'Coffee', 'Coca-Cola', 'Sugar Syrup', 'Grenadine'];
+        var boolArray = [];
+        for (var i = 0; i < 27; i++) {
+            var currentBool = $(this).attr("data-id=" + " " + i + " ");
+            var currentPref = currentBool.attr("data-bool");
+            boolArray.push(currentPref);
+        }
+        console.log(currentPref);
+</script>
+
 </body>
 
 <script>

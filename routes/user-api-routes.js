@@ -23,7 +23,13 @@ module.exports = function(app){
 
     // Adds a new user to the model in mysql
     app.post("/api/users", function(req, res){
-        db.user.create(req.body).then(function(dbUser){
+        var username = req.body.username;
+        var password = req.body.password;
+        console.log(username, password);
+        db.user.create({
+            username: username, 
+            password: password
+        }).then(function(dbUser){
             res.json(dbUser);
         });
     });

@@ -1,11 +1,13 @@
 ## Shocktail
 
-### Description
-
+<!-- ### Description -->
 
 <h5 align="center">Launch the application on (https://shocktail.herokuapp.com/)</h5>
 
 ### Application Preview
+
+### Shocktail App
+![Shocktail-Gif](public/assets/images/shocktail.gif)
 
 ### User Signed-In
 ![Shocktail-SignIn](public/assets/images/signin.png)
@@ -26,8 +28,7 @@
 ### APIs
 * [CocktailDB](https://www.thecocktaildb.com/) - Cocktails and ingredients Show
 
-## Code snippets
-
+<!-- ## Code snippets -->
 
 ### Learning points
 1. Creating a full stack web application.
@@ -41,9 +42,9 @@
 
 ### Authors
 * [Minal Kharche Github](https://github.com/minalk24)  
-* [ Github]()  
-* [ Github]()  
-* [ Github]()  
+* [Darryl Tolentino Github](https://github.com/DarrylJLTolentino)  
+* [Kristina Alekseeva Github](https://github.com/javascriptkitty) 
+* [Raghav Shiv Github](https://github.com/rshiv7) 
 
 ### License
 Standard MIT License

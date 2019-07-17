@@ -5,7 +5,7 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 // allowNull: false,
                 // notEmpty: true,
-                len: [1, 16]
+                len: [1, 30]
             }
         },
         password: {
